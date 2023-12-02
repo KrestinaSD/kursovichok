@@ -1,4 +1,4 @@
-#include "WebManager.h"
+#include "communicator.h"
 #include "programmerror.h"
 #include "logger.h"
 #include "auth.h"

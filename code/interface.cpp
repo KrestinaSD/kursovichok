@@ -8,9 +8,8 @@
 #include <unordered_map>
 #include "interface.h"
 #include "programmerror.h"
-#include "WebManager.h"
+#include "communicator.h"
 #include "logger.h"
-//#include "communicator.h"
 
 int interface::Opts(int argc, char **argv)
 {
@@ -48,7 +47,7 @@ int interface::Opts(int argc, char **argv)
     
     /***************************
     *
-    * Инициализация элекментов класса
+    * Инициализация элементов класса
     *
     *****************************/
 	ErrorTracker ErrTr;
@@ -82,9 +81,11 @@ int interface::Opts(int argc, char **argv)
     
 }
 
-
-
-
+/*****
+*
+* подсказка
+*
+*****/
 void interface::usage(const char* progName)
 {
     std::cout<<"Использование: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port] \n";
@@ -92,8 +93,11 @@ void interface::usage(const char* progName)
 }
 
 
-
-
+/******
+*
+*проверка файлов
+*
+*******/
 bool interface::CheckFiles()
 {
     std::ifstream databaseFile(DataBaseName);

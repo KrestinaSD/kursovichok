@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <vector>
-#include "WebManager.h"
 #include "programmerror.h"
 #include "logger.h"
 #include "auth.h"
