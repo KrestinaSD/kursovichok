@@ -4,7 +4,7 @@
 #include "userbase.h"
 #include <iostream>
 #include "WebManager.h"
-#include "communicator.h"
+//#include "communicator.h"
 #include <vector>
 #include <string>
 #include <map>

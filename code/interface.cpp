@@ -10,7 +10,7 @@
 #include "programmerror.h"
 #include "WebManager.h"
 #include "logger.h"
-#include "communicator.h"
+//#include "communicator.h"
 
 int interface::Opts(int argc, char **argv)
 {
@@ -68,7 +68,7 @@ int interface::Opts(int argc, char **argv)
         	int sock = main_manager.accepting();
         	std::cout<<"Client connected"<<std::endl;
         	logger.writelog("The server started");
-        	conversation(Port,  LogFileName, new_db, sock);
+        	main_manager.conversation(Port,  LogFileName, new_db, sock);
     	}
     	
 	} catch (const server_error & e) {

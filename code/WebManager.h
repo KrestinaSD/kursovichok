@@ -9,7 +9,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <vector>
-
+#include "WebManager.h"
+#include "programmerror.h"
+#include "logger.h"
+#include "auth.h"
+#include "calculator.h"
+#include "userbase.h"
 
 class WebManager
 {
@@ -25,5 +30,5 @@ public:
 	int accepting(); // принятие соединения
     int receiving(int sock, void*buf, int size);//принимает данные из сокета
     void sending(int sock, void*buf, int sizeb);//отправляет данные через сокет
-    //добавляем класс, который будет "разговаривать" с клиентом
+    void conversation(unsigned int port, std::string LogName, DB new_db, int sock); // "разговор" с клиентом
 };
