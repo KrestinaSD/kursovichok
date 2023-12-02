@@ -9,8 +9,8 @@
 #include <random>
 #include <sstream>
 #include <map>
-#include "Auth.h"
-#include "ErrorTracker.h"
+#include "auth.h"
+#include "programmerror.h"
 #include <exception>
 #include <typeinfo>
 #include <string>
@@ -53,6 +53,7 @@ bool Auth::CompareHashes(std::string ClientHash)
     	std::string msg = SALT+password;
     	//std::cout<<msg<<std::endl;
     	StringSource ss(msg, true , new HashFilter(hash, new HexEncoder(new StringSink (strHash))));
+    	
     	
     } catch(const CryptoPP::Exception& e ) {
 		throw server_error(std::string("Hash calsulation error"));   // catch exception

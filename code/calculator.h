@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <exception>
-#include "ErrorTracker.h"
+#include "programmerror.h"
 
 class Average
 {

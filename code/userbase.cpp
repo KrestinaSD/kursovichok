@@ -5,8 +5,8 @@
 #include <typeinfo>
 #include <iostream>
 #include <boost/algorithm/string.hpp>
-#include "ErrorTracker.h"
-#include "DataBase.h"
+#include "programmerror.h"
+#include "userbase.h"
 
 DB::DB(std::string DBName)
     {

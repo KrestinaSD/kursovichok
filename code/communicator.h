@@ -1,9 +1,9 @@
-#include "Auth.h"
+#include "auth.h"
 #include "calculator.h"
-#include "DataBase.h"
+#include "userbase.h"
 #include <iostream>
 #include "WebManager.h"
-#include "ErrorTracker.h"
+#include "programmerror.h"
 #include <vector>
 #include <string>
 #include <map>

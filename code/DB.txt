@@ -1,4 +1,0 @@
-pasha:12345
-vova:09876
-user/:P@ssW0rd
-user:P@ssW0rd

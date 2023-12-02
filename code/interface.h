@@ -1,29 +1,28 @@
 #pragma once
 #include <string>
-#include <map>
+#include <optional>
 
-using namespace std;
-
-class Opts
+class interface
 {
 private:
-    string DataBaseName = "base.txt"; ///< Путь к файлу с базой данных
-    string LogFileName = "log.txt"; ///< Путь к файлу для записи логов
-    int Port = 33333; ///< Порт, на котором работает сервер
-    void usage(const char* progName); ///<вывод подсказки и останов
+    std::string DataBaseName = "base.txt"; ///< Путь к файлу с базой данных
+    std::string LogFileName = "log.txt"; /// Путь к файлу для записи логов
+    int Port = 33333; /// Порт, на котором работает сервер
+    void usage(const char* progName); /// Вывод подсказки и останов
 public:
-    Opts(int argc, char **argv);
-	bool CheckFiles();
-    string getDataBaseName() ///<Возвращает путь к файлу с базой данных 
+    int Opts(int argc, char **argv);
+    bool CheckFiles();
+    std::string getDataBaseName() ///Возвращает путь к файлу с базой данных 
     {
         return DataBaseName;
     }
-    string getLogFileName() ///<Возвращает путь к файлу для записи логов
+    std::string getLogFileName() /// Возвращает путь к файлу для записи логов
     {
         return LogFileName;
     }
-    int getPort() ///<Порт, на котором работает сервер
+    int getPort() ///Порт, на котором работает сервер
     {
         return Port;
     }
 };
+

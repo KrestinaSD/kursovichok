@@ -2,27 +2,32 @@
 #include <cstdlib> 
 #include <unistd.h> 
 #include <string>
-#include "interface.h"
 #include <fstream>
-#include <map>
-#include <exception>
-#include "ErrorTracker.h"
+#include <filesystem>
+#include <optional>
+#include <unordered_map>
+#include "interface.h"
+#include "programmerror.h"
+#include "WebManager.h"
+#include "logger.h"
+#include "communicator.h"
 
-using namespace std;
-
-Opts::Opts(int argc, char **argv)
+int interface::Opts(int argc, char **argv)
 {
+	/*********************************
+	*
+	*   разбор пкс
+	*
+	*********************************/
+    // Создаем unordered_map для хранения аргументов командной строки
+    std::unordered_map<char, std::string> args;
     int opt;
     while ((opt = getopt(argc, argv, "b:l:p:h")) != -1) {
         switch (opt) {
         case 'b':
-            DataBaseName = string(optarg);
-            break;
         case 'l':
-            LogFileName = string(optarg);
-            break;
         case 'p':
-            Port = strtol(optarg,nullptr,10);
+            args[opt] = std::string(optarg);
             break;
         case 'h': 
         case '?': 
@@ -30,26 +35,79 @@ Opts::Opts(int argc, char **argv)
             usage(argv[0]);
         }
     }
+
+    if(args.count('b')) {
+        DataBaseName = args['b'];
+    }
+    if(args.count('l')) {
+        LogFileName = args['l'];
+    }
+    if(args.count('p')) {
+        Port = std::stoi(args['p']);
+    }
+    
+    /***************************
+    *
+    * Инициализация элекментов класса
+    *
+    *****************************/
+	ErrorTracker ErrTr;
+	Logger logger;
+    try{
+    	ErrTr.setLogName(LogFileName);
+    	logger.set_path(LogFileName);
+    	CheckFiles();
+    	DB new_db(DataBaseName);
+    	WebManager main_manager(Port);
+    	main_manager.bindSocket();
+    	std::cout<<"The server start"<<std::endl;
+        logger.writelog("The server started");
+    	main_manager.listenSocket();
+
+    	while (true) {
+        	int sock = main_manager.accepting();
+        	std::cout<<"Client connected"<<std::endl;
+        	logger.writelog("The server started");
+        	conversation(Port,  LogFileName, new_db, sock);
+    	}
+    	
+	} catch (const server_error & e) {
+	    logger.writelog(e.what());
+		ErrTr.write_log(e.what(), e.getState());
+        if (e.getState()){
+			exit(1);
+		}
+    }
+    return 0;
+    
 }
 
-void Opts::usage(const char* progName)
+
+
+
+void interface::usage(const char* progName)
 {
-    std::cout<<"Usage: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port] \n";
+    std::cout<<"Использование: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port] \n";
     exit(1);
 }
 
-bool Opts::CheckFiles()
-{
-        std::ifstream file1(DataBaseName);
-        if (!file1.good()) {
-            throw server_error(std::string("Wrong database-file Name"), true);
-			return false;
-        }
-        std::ifstream file2(LogFileName);
-        if (!file2.good()) {
-            throw server_error(std::string("Wrong log-file Name"), true);
-			return false;
-		}
 
-    	return true;
+
+
+bool interface::CheckFiles()
+{
+    std::ifstream databaseFile(DataBaseName);
+    if(!databaseFile.good()) {
+        throw server_error(std::string("Неверное имя файла базы данных"), true);
+        return false;
+    }
+    databaseFile.close();
+
+    std::ifstream logFile(LogFileName);
+    if(!logFile.good()) {
+        throw server_error(std::string("Неверное имя файла журнала"), true);
+        return false;
+    }
+    logFile.close();
+    return true;
 }

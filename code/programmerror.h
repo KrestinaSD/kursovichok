@@ -16,9 +16,7 @@ private:
 public:
 	ErrorTracker(){}; ///< Конструктор без параметров
     void setLogName(std::string LogName); ///<Функция, устанавливающая путь к файлу с логом ошибок
-
-
-
+	static std::string getDateTime();
     void write_log(std::string what, bool Critical);
 	~ErrorTracker(){}; ///< Деструктор
 };

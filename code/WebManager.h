@@ -17,17 +17,13 @@ private:
     unsigned int Port; //Порт, на котором работает сервер
     const char* Adress = "127.0.0.1"; //Сетевой адрес сервера
     struct sockaddr_in addr; //Структура sockaddr_in
-    int listener; //Основной сокет 
+    int sckt; //Основной сокет 
 public:
-    WebManager(unsigned int port);
-
-    void start_listening();
-
-    int new_bind();
-
-    int accepting();
-
-    int receiving(int sock, void*buf, int size);
-
-    void sending(int sock, void*buf, int sizeb);
+	WebManager(unsigned int port); // Конструктор класса в нем создание сокета
+	void bindSocket();// бинды 
+	void listenSocket(); // ожидание
+	int accepting(); // принятие соединения
+    int receiving(int sock, void*buf, int size);//принимает данные из сокета
+    void sending(int sock, void*buf, int sizeb);//отправляет данные через сокет
+    //добавляем класс, который будет "разговаривать" с клиентом
 };
