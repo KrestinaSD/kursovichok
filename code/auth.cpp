@@ -1,5 +1,4 @@
 #include "auth.h"
-//#include "programmerror.h"
 
 
 Auth::Auth(std::string pass) {  
