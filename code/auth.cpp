@@ -15,8 +15,7 @@
 #include <typeinfo>
 #include <string>
 
-
-Auth::Auth(std::string ID, std::string pass) {   ///???
+Auth::Auth(std::string ID, std::string pass) {  
     Id = ID; 
     password = pass;
     }
@@ -56,9 +55,8 @@ bool Auth::CompareHashes(std::string ClientHash)
     	                new HashFilter(hash, 
     	                               new HexEncoder(new StringSink (strHash))));
     	
-    	
     } catch(const CryptoPP::Exception& e ) {
-		throw server_error(std::string("Hash calsulation error"));   // catch exception
+		throw server_error(std::string("Hash calculation error"));   // catch exception
         return false;
     }	
         
