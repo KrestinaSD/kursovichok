@@ -1,3 +1,9 @@
+/**
+* @file userbase.h
+* @author Крестина С.Д.
+* @version 1.0
+* @brief Заголовочный файл для модуля userbase, отвечающий за получение данных из базы клиентов
+*/
 #pragma once
 
 #include <map>
@@ -6,18 +12,28 @@
 #include <exception>
 #include <typeinfo>
 #include <iostream>
-#include <boost/algorithm/string.hpp>
 #include "programmerror.h"
-
+/** 
+ * @brief Класс для получения данных из файла базы клиентов
+ * @details Методы: проверка ID
+ */
 
 class DB
 {
 private:
     char sep = ':'; ///<Разделитель идентификатора и пароля в базе данных
 public:
-	std::map <std::string,std::string> DataBaseP; ///<Словарь с парами идентификатор:пароль
-
+	std::map <std::string,std::string> DataBaseP; ///< Словарь с парами идентификатор:пароль
+	/**
+ 	* @brief Конструтор класса
+ 	* @param [in] DBName - путь до файла с данными клиентов
+ 	* @details В этом конструкторе происходит открытие файла, получение данных, заполнение словаря, закрытие словаря
+ 	*/
     DB(std::string DBName);
-
+	/**
+ 	* @brief Функция проверки наличия ID  в файле базы клиентов
+ 	* @details В этом методе происходит проверка на наличие ID в файле базы клиентов
+ 	* @return True or False
+ 	*/
     bool IDcheck(std::string login);
 };

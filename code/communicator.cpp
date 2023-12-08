@@ -1,14 +1,4 @@
 #include "communicator.h"
-#include "programmerror.h"
-#include "logger.h"
-#include "auth.h"
-#include "calculator.h"
-#include "userbase.h"
-#include "interface.h"
-#include <iostream>
-#include <vector>
-#include <string>
-#include <map>
 
 using namespace std;
 
@@ -18,9 +8,8 @@ interface lg;
 string logfile = lg.getLogFileName();
 Logger logi(logfile);
 
-WebManager::WebManager(unsigned int port){
+communicator::communicator(unsigned int port){
 // Создание сокета
-
     sckt = socket(AF_INET, SOCK_STREAM, 0);
     if(sckt < 0) {
         throw server_error(std::string("Socket creation error"), true);
@@ -33,7 +22,7 @@ WebManager::WebManager(unsigned int port){
 }
 
 
-void WebManager::bindSocket() {
+void communicator::bindSocket() {
     // Привязка сокета к адресу
     int rc = bind(sckt, (struct sockaddr *)&addr, sizeof(addr));
     if(rc < 0) {
@@ -42,7 +31,7 @@ void WebManager::bindSocket() {
     logi.writelog("Socket bind OK");
 }
 
-void WebManager::listenSocket() {
+void communicator::listenSocket() {
     // Начало прослушивания входящих соединений
     int l = listen(sckt, 1);
     if (l < 0) {
@@ -51,7 +40,7 @@ void WebManager::listenSocket() {
     logi.writelog("Listening OK");
 }
 
-int WebManager::accepting() {
+int communicator::accepting() {
     // Принятие входящего соединения
     sockaddr_in * client_addr = new sockaddr_in;
     socklen_t len = sizeof (sockaddr_in);
@@ -66,7 +55,7 @@ int WebManager::accepting() {
 }
 
 // Функция receiving, которая принимает данные из сокета
-int WebManager::receiving(int sock, void*buf, int size){
+int communicator::receiving(int sock, void*buf, int size){
     // Прием данных из сокета sock в буфер buf размера size
     int rc = recv(sock, buf, size, 0);
     if (rc < 0){
@@ -79,7 +68,7 @@ int WebManager::receiving(int sock, void*buf, int size){
 }
 
 // Функция sending, которая отправляет данные через сокет
-void WebManager::sending(int sock, void*buf, int sizeb){
+void communicator::sending(int sock, void*buf, int sizeb){
     // Отправка данных из буфера buf размера sizeb через сокет sock
     int rc = send(sock, buf, sizeb, 0);
     if (rc < 0){
@@ -89,7 +78,7 @@ void WebManager::sending(int sock, void*buf, int sizeb){
     logi.writelog("Sending OK");
 }
 
-void WebManager::conversation(unsigned int port, std::string LogName, DB new_db, int sock)
+void communicator::conversation(unsigned int port, std::string LogName, DB new_db, int sock)
 {
 	try{
     char buf[2048];
@@ -100,11 +89,9 @@ void WebManager::conversation(unsigned int port, std::string LogName, DB new_db,
 		if (USRlogIn[i] == '\n'){
 			USRlogIn.pop_back();}
 	}
-   //std::cout<<USRlogIn<< USRlogIn.size()<<std::endl;
    		new_db.IDcheck(USRlogIn);
-        Auth new_auth(USRlogIn, new_db.DataBaseP[USRlogIn]);
-        new_auth.GenSALT();
-        string str_salt = new_auth.getSALT();
+        Auth new_auth(new_db.DataBaseP[USRlogIn]);
+        string str_salt = new_auth.GenSALT();
         char salt_buf[16];
         strcpy(salt_buf, str_salt.c_str());
         sending(sock, salt_buf, sizeof(salt_buf));
@@ -131,11 +118,9 @@ void WebManager::conversation(unsigned int port, std::string LogName, DB new_db,
         	for(unsigned int i = 0; i < vector_len; i++) {
                     arr.push_back(int_buf[i]);
             }
-            /*
-            *
-            *вычисления
-            *
-            */
+            //
+            //вычисления
+            //
             Average res;
             double result = res.average(arr);
             sending(sock, &result, sizeof(double));
@@ -145,7 +130,7 @@ void WebManager::conversation(unsigned int port, std::string LogName, DB new_db,
        logi.writelog("Calculating OK");
        close(sock);
        std::cout<<"Done\n";
-       return;
+       logi.writelog("Client disconnected");
        
     } catch (const server_error & e) {
 		ErrorTracker new_ErrTr;
@@ -154,10 +139,9 @@ void WebManager::conversation(unsigned int port, std::string LogName, DB new_db,
 		if (e.getState()){
 			exit(1);
 		}
-		WebManager ERR_send_manager(port);
-        ERR_send_manager.sending(sock, Auth("NO","NO").ERRmsg, sizeof(Auth("NO","NO").ERRmsg));
+		communicator ERR_send_manager(port);
+        ERR_send_manager.sending(sock, Auth("NO").ERRmsg, sizeof(Auth("NO").ERRmsg));
         close(sock);
-        return;
     }
 }
 

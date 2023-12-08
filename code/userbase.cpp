@@ -1,14 +1,5 @@
-#include <map>
-#include <string>
-#include <fstream>
-#include <exception>
-#include <typeinfo>
-#include <iostream>
-#include <boost/algorithm/string.hpp>
-#include "programmerror.h"
+
 #include "userbase.h"
-
-
 
 DB::DB(std::string DBName)
     {

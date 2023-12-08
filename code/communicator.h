@@ -1,5 +1,11 @@
-#pragma once
+/**
+* @file communicator.h
+* @author Крестина С.Д.
+* @version 1.0
+* @brief Заголовочный файл для модуля communacator, отвечающий за связь с клиентом
+*/
 
+#pragma once
 #include <iostream>
 #include <string.h>
 #include <sys/types.h>
@@ -9,25 +15,68 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <vector>
+#include <string>
+#include <map>
 #include "programmerror.h"
 #include "logger.h"
 #include "auth.h"
 #include "calculator.h"
 #include "userbase.h"
+#include "interface.h"
 
-class WebManager
+/** 
+ * @brief Класс для связи с клиентом 
+ * @details Методы: установка бинда,
+ * установка сервера в режим ожидания соединения
+ * принятие соединения
+ * получение данных от клиента
+ * отправка данных клиенту
+ * "разговор" с клиентом
+ */
+class communicator
 {
 private:
-    unsigned int Port; //Порт, на котором работает сервер
-    const char* Adress = "127.0.0.1"; //Сетевой адрес сервера
-    struct sockaddr_in addr; //Структура sockaddr_in
-    int sckt; //Основной сокет 
+    unsigned int Port; ///< Порт, на котором работает сервер
+    const char* Adress = "127.0.0.1"; ///< Сетевой адрес сервера
+    struct sockaddr_in addr; ///< Структура sockaddr_in
+    int sckt; ///< Основной сокет 
 public:
-	WebManager(unsigned int port); // Конструктор класса в нем создание сокета
-	void bindSocket();// бинды 
-	void listenSocket(); // ожидание
-	int accepting(); // принятие соединения
-    int receiving(int sock, void*buf, int size);//принимает данные из сокета
-    void sending(int sock, void*buf, int sizeb);//отправляет данные через сокет
-    void conversation(unsigned int port, std::string LogName, DB new_db, int sock); // "разговор" с клиентом
+	/**
+ 	* @brief Конструтор класса
+ 	* @param [in] port Порт, на котором работает сервер
+ 	* @details В этом конструкторе происходит создание сокета
+ 	*/
+	communicator(unsigned int port); 
+	 /**
+ 	* @brief Функция установки бинда
+ 	* @details В этом методе происходит установка бинда по созданному сокету. Ничего не возвращает.
+ 	*/
+	void bindSocket();
+	 /**
+ 	* @brief Функция установки сервера в режим ожидания соединений
+ 	* @details В этом методе происходит установка сервера в режим ожидания соединений. Ничего не возвращает.
+ 	*/
+	void listenSocket(); 
+	/**
+ 	* @brief Функция принятия соединения
+ 	* @details В этом методе происходит принятие соедиения от клиента. 
+ 	* @return scktr
+ 	*/
+	int accepting();
+	/**
+ 	* @brief Функция получения данных от клиента
+ 	* @details В этом методе происходит получение данных от клиента. 
+ 	* @return rc
+ 	*/
+    int receiving(int sock, void*buf, int size);
+    /**
+ 	* @brief Функция отправки сообщения клиенту
+ 	* @details В этом методе просиходит отправка сообщений клиенту. Ничего не возвращает.
+ 	*/
+    void sending(int sock, void*buf, int sizeb);
+    /**
+ 	* @brief Функция "разговора" с клиентом.
+ 	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
+ 	*/
+    void conversation(unsigned int port, std::string LogName, DB new_db, int sock); 
 };

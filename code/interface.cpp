@@ -61,7 +61,7 @@ int interface::Opts(int argc, char **argv)
     	logger.set_path(LogFileName);
     	CheckFiles();
     	DB new_db(DataBaseName);
-    	WebManager main_manager(Port);
+    	communicator main_manager(Port);
     	main_manager.bindSocket();
     	std::cout<<"The server start"<<std::endl;
         logger.writelog("The server started");

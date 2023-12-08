@@ -1,5 +1,4 @@
 #include "logger.h"
-#include "interface.h"
 
 using namespace std;
 
@@ -22,14 +21,11 @@ int Logger::writelog(std::string s) {
     if(filelog.is_open()) {
         std::string time = getDateTime();
         filelog << time << ' ' << s << std::endl;
+        filelog.close();
         return 0;
     } else {
+    	filelog.close();
         return 1;
     }
 }
 
-
-void Logger::write_error(std::string message) {
-    std::string log_message = "Error: " + message;
-    writelog(log_message);
-}
