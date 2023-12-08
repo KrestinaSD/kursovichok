@@ -15,8 +15,6 @@ private:
 
 public:
 
-
-
     Auth(std::string ID, std::string pass);
 
 

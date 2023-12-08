@@ -4,6 +4,7 @@
 #include "auth.h"
 #include "calculator.h"
 #include "userbase.h"
+#include "interface.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -12,12 +13,14 @@
 using namespace std;
 
 struct sockaddr_in addr;
-int Port;
-Logger logi;
 
+interface lg; 
+string logfile = lg.getLogFileName();
+Logger logi(logfile);
 
 WebManager::WebManager(unsigned int port){
 // Создание сокета
+
     sckt = socket(AF_INET, SOCK_STREAM, 0);
     if(sckt < 0) {
         throw server_error(std::string("Socket creation error"), true);
@@ -45,7 +48,7 @@ void WebManager::listenSocket() {
     if (l < 0) {
     	throw server_error(std::string("Listening error"), true);
     }
-    logi.writelog("Listening  OK");
+    logi.writelog("Listening OK");
 }
 
 int WebManager::accepting() {
@@ -89,7 +92,6 @@ void WebManager::sending(int sock, void*buf, int sizeb){
 void WebManager::conversation(unsigned int port, std::string LogName, DB new_db, int sock)
 {
 	try{
-	//WebManager new_manager(port);
     char buf[2048];
     int bytes_read;
     bytes_read = receiving(sock, &buf, 2048);
@@ -129,12 +131,18 @@ void WebManager::conversation(unsigned int port, std::string LogName, DB new_db,
         	for(unsigned int i = 0; i < vector_len; i++) {
                     arr.push_back(int_buf[i]);
             }
-            
+            /*
+            *
+            *вычисления
+            *
+            */
             Average res;
             double result = res.average(arr);
             sending(sock, &result, sizeof(double));
+            logi.writelog("Sending OK");
        }
        std::cout<<"Calculations were successful\n";
+       logi.writelog("Calculating OK");
        close(sock);
        std::cout<<"Done\n";
        return;

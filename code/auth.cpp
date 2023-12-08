@@ -52,7 +52,9 @@ bool Auth::CompareHashes(std::string ClientHash)
     	Weak::MD5 hash;
     	std::string msg = SALT+password;
     	//std::cout<<msg<<std::endl;
-    	StringSource ss(msg, true , new HashFilter(hash, new HexEncoder(new StringSink (strHash))));
+    	StringSource ss(msg, true , 
+    	                new HashFilter(hash, 
+    	                               new HexEncoder(new StringSink (strHash))));
     	
     	
     } catch(const CryptoPP::Exception& e ) {

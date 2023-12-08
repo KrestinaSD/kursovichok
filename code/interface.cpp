@@ -21,6 +21,10 @@ int interface::Opts(int argc, char **argv)
     // Создаем unordered_map для хранения аргументов командной строки
     std::unordered_map<char, std::string> args;
     int opt;
+   /*if (argc < 2) {
+    usage(argv[0]); // Выводим справку
+    return 1; // Завершаем программу
+    } else {*/
     while ((opt = getopt(argc, argv, "b:l:p:h")) != -1) {
         switch (opt) {
         case 'b':
@@ -62,11 +66,11 @@ int interface::Opts(int argc, char **argv)
     	std::cout<<"The server start"<<std::endl;
         logger.writelog("The server started");
     	main_manager.listenSocket();
-
+    	logger.writelog("The server listen sockets");
     	while (true) {
         	int sock = main_manager.accepting();
         	std::cout<<"Client connected"<<std::endl;
-        	logger.writelog("The server started");
+        	logger.writelog("Client connected");
         	main_manager.conversation(Port,  LogFileName, new_db, sock);
     	}
     	
@@ -78,7 +82,7 @@ int interface::Opts(int argc, char **argv)
 		}
     }
     return 0;
-    
+   // }
 }
 
 /*****
