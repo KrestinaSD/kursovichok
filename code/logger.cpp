@@ -7,7 +7,7 @@ void Logger::set_path(std::string LogName) {
 	std::ofstream log(LogName, std::ios_base::app);
 	if(!log.good()){
 			throw std::invalid_argument("Wrong log File Name");
-			}
+	}
 	log.close();
     path_to_logfile = LogName;
 }
