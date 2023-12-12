@@ -24,23 +24,38 @@ SUITE(HAHA){
     	// Устанавливаем неправильный SALT
     	auth.setSALT("0000");
     	CHECK_THROW(auth.CompareHashes(hash), server_error);
-	}}
-	/*TEST(EMPTY_SALT){
-		
+	}
+	TEST(EMPTY_SALT){
+		Auth auth("password");
+    	std::string salt = auth.GenSALT();
+    	std::string hash = auth.GenHash("password");
+    	// Устанавливаем неправильный SALT
+    	auth.setSALT("");
+    	CHECK_THROW(auth.CompareHashes(hash), server_error);
 	}
 
 	TEST(BAD_PASS){
-		
+		 Auth auth("password");
+    	std::string salt = auth.GenSALT();
+    	std::string badHash = auth.GenHash("badpassword");
+    	CHECK_THROW(auth.CompareHashes(badHash), server_error);
 	}
+	
 	TEST(EMPTY_PASS){
-		
+		Auth auth("password");
+    	std::string salt = auth.GenSALT();
+    	std::string badHash = auth.GenHash("");
+    	CHECK_THROW(auth.CompareHashes(badHash), server_error);
 	}
 
 	TEST(NORM){
-		
+		Auth auth("password");
+   		std::string salt = auth.GenSALT();
+    	std::string goodHash = auth.GenHash("password");
+    	CHECK(auth.CompareHashes(goodHash));
 	}
 }
-
+/*
 //Тесты вычисления среднего арифметического в модуле калькулятора
 SUITE(CALC){
 	TEST(EMPTY_VEC){

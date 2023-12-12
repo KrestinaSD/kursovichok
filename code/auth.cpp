@@ -39,7 +39,6 @@ std::string Auth::GenHash(const std::string& password) {
         new CryptoPP::HashFilter(hash,
             new CryptoPP::HexEncoder(
                 new CryptoPP::StringSink(strHash))));
-
     return strHash;
 }
 
@@ -50,28 +49,10 @@ bool Auth::CompareHashes(std::string ClientHash) {
     if (ClientHash != ServerHash) {
         throw server_error(std::string("Invalid Hash"));
     }
-	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<strHash<<" "<<std::endl;
-    return (ClientHash.compare(strHash) == 0);
+	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
+    return (ClientHash.compare(ServerHash) == 0);
 }
 
 
-
-/*bool Auth::CompareHashes(std::string password)
-{
-    	using namespace CryptoPP;
-    	Weak::MD5 hash;
-    	std::string msg = SALT+password;
-    	StringSource ss(msg, true , 
-    	                new HashFilter(hash, 
-    	                               new HexEncoder(new StringSink (strHash))));
-    	
-   	
-        
-	if (ClientHash.compare(strHash) != 0){
-			throw server_error(std::string("Invalid Hash"));
-	} 
-	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<strHash<<" "<<std::endl;
-    return (ClientHash.compare(strHash) == 0);
-}*/
 
 
