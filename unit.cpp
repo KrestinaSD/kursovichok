@@ -18,11 +18,12 @@
 //Тесты сравнения хешей CompareHashes в модуле аутентификации
 SUITE(HAHA){
 	TEST(BAD_SALT){
-		std::string Client_HASH = "AE89DB7F4CA9B00B2A72CE5CF36BD48B";
-		std::string pass = "qwerty";
-		Auth au(pass);
-		au.setSALT("0000");
-		CHECK_THROW(au.CompareHashes(pass), server_error);
+    	Auth auth("password");
+    	std::string salt = auth.GenSALT();
+    	std::string hash = auth.GenHash("password");
+    	// Устанавливаем неправильный SALT
+    	auth.setSALT("0000");
+    	CHECK_THROW(auth.CompareHashes(hash), server_error);
 	}}
 	/*TEST(EMPTY_SALT){
 		

@@ -54,6 +54,8 @@ bool Auth::CompareHashes(std::string ClientHash) {
     return (ClientHash.compare(strHash) == 0);
 }
 
+
+
 /*bool Auth::CompareHashes(std::string password)
 {
     	using namespace CryptoPP;

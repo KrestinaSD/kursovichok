@@ -39,7 +39,7 @@ public:
     char OKmsg[2] = {'O', 'K'}; ///< Сообщение, отсылаемое клиенту при успешной авторизации
     /**
  	* @brief Конструтор класса
- 	* @param [in] wskey Пароль
+ 	* @param [in] pass Пароль
  	*/
     Auth(std::string pass);
     /**
