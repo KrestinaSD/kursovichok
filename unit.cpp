@@ -13,21 +13,38 @@
 #include "code/userbase.h"
 #include "code/userbase.cpp"
 #include <UnitTest++/UnitTest++.h>
+#include <string>
 
 //Тесты сравнения хешей CompareHashes в модуле аутентификации
 SUITE(HAHA){
-	TEST(BAD_SALT){}
-	TEST(EMPTY_SALT){}
+	TEST(BAD_SALT){
+		std::string Client_HASH = "AE89DB7F4CA9B00B2A72CE5CF36BD48B";
+		std::string pass = "qwerty";
+		Auth au(pass);
+		au.setSALT("0000");
+		CHECK_THROW(au.CompareHashes(pass), server_error);
+	}}
+	/*TEST(EMPTY_SALT){
+		
+	}
 
-	TEST(BAD_PASS){}
-	TEST(EMPTY_PASS){}
+	TEST(BAD_PASS){
+		
+	}
+	TEST(EMPTY_PASS){
+		
+	}
 
-	TEST(NORM){}
+	TEST(NORM){
+		
+	}
 }
 
 //Тесты вычисления среднего арифметического в модуле калькулятора
 SUITE(CALC){
-	TEST(EMPTY_VEC){}
+	TEST(EMPTY_VEC){
+	
+	}
 	TEST(MAX_OVER_VEC){}
 	TEST(MIN_OVER_VEC){}
 	
@@ -36,7 +53,9 @@ SUITE(CALC){
 
 //Тесты открытия базы данных
 SUITE(CLIENTIC){
-	TEST(EMPTY_PATH){}
+	TEST(EMPTY_PATH){
+	userbase us;
+	}
 	TEST(BAD_PATH){}
 	
 	TEST(NORM_PATH){}
@@ -52,7 +71,7 @@ SUITE(LOGGERY){
 	TEST(){}
 	
 	TEST(NORM){}
-}
+}*/
 
 int main()
 {
