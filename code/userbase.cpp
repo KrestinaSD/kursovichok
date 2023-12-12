@@ -23,11 +23,3 @@ bool DB::IDcheck(std::string login)
         return DataBaseP.count(login) == 1;
     }
 
-bool DB::CheckFiles(){
-    std::ifstream databaseFile(path_to_userbase);
-    if(!databaseFile.good()) {
-        return false;
-    }
-    databaseFile.close();
-    return true;
-}

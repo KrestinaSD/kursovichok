@@ -22,6 +22,9 @@ std::string Logger::getDateTime() {
 }
 
 int Logger::writelog(std::string s) {
+	if (s.empty()) {
+        throw std::invalid_argument("Empty message");
+    }
     std::ofstream filelog;
     filelog.open(path_to_logfile, std::ios_base::out | std::ios_base::app);
     if(filelog.is_open()) {
