@@ -12,6 +12,7 @@
 #include <time.h>
 #include <fstream>
 #include "interface.h"
+#include "programmerror.h"
 
 /** 
  * @brief Класс для формирования и записи логов
@@ -32,7 +33,8 @@ public:
     int writelog(std::string s);
     /**
  	* @brief Функция получение пути до файла журнала работы
- 	* @details В этом методе происходит получение пути до файла журнала работы. Ничего не возращает. 	*/
+ 	* @details В этом методе происходит получение пути до файла журнала работы. Ничего не возращает. 	
+ 	*/
     void set_path(std::string path_file);
     /**
  	* @brief Конструтор класса без параметров
@@ -49,6 +51,7 @@ public:
  	* @return string(buf)
  	*/
     static std::string getDateTime();
+    
 };
 
 

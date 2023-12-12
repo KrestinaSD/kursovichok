@@ -2,9 +2,15 @@
 
 using namespace std;
 
-void Logger::set_path(std::string path_file) {
-        path_to_logfile = path_file;
-    }
+
+void Logger::set_path(std::string LogName) {
+	std::ofstream log(LogName, std::ios_base::app);
+	if(!log.good()){
+			throw std::invalid_argument("Wrong log File Name");
+			}
+	log.close();
+    path_to_logfile = LogName;
+}
     
 std::string Logger::getDateTime() {
     time_t now = time(0);
@@ -28,4 +34,3 @@ int Logger::writelog(std::string s) {
         return 1;
     }
 }
-

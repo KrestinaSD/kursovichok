@@ -57,9 +57,9 @@ int interface::Opts(int argc, char **argv)
 	ErrorTracker ErrTr;
 	Logger logger;
     try{
+        //CheckFiles();
     	ErrTr.setLogName(LogFileName);
     	logger.set_path(LogFileName);
-    	CheckFiles();
     	DB new_db(DataBaseName);
     	communicator main_manager(Port);
     	main_manager.bindSocket();
@@ -97,25 +97,4 @@ void interface::usage(const char* progName)
 }
 
 
-/******
-*
-*проверка файлов
-*
-*******/
-bool interface::CheckFiles()
-{
-    std::ifstream databaseFile(DataBaseName);
-    if(!databaseFile.good()) {
-        throw server_error(std::string("Неверное имя файла базы данных"), true);
-        return false;
-    }
-    databaseFile.close();
 
-    std::ifstream logFile(LogFileName);
-    if(!logFile.good()) {
-        throw server_error(std::string("Неверное имя файла журнала"), true);
-        return false;
-    }
-    logFile.close();
-    return true;
-}

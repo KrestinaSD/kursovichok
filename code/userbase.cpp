@@ -3,7 +3,8 @@
 
 DB::DB(std::string DBName)
     {
-        std::ifstream file(DBName);
+    	std::string path_to_userbase = DBName;
+        std::ifstream file(path_to_userbase);
 		if(!file.good()){
 			throw server_error(std::string("Wrong DB File Name"), true);
 		} 
@@ -21,3 +22,12 @@ bool DB::IDcheck(std::string login)
 			
         return DataBaseP.count(login) == 1;
     }
+
+bool DB::CheckFiles(){
+    std::ifstream databaseFile(path_to_userbase);
+    if(!databaseFile.good()) {
+        return false;
+    }
+    databaseFile.close();
+    return true;
+}

@@ -29,12 +29,6 @@ public:
  	*/
     int Opts(int argc, char **argv);
     /**
- 	* @brief Функция проверки файлов
- 	* @details В этом методе происходит проверка на "правильность" файлов
- 	* @return True or False
- 	*/
-    bool CheckFiles();
-    /**
  	* @brief Функция получения пути до журнала работы
  	* @details В этом методе возвращается путь до файла с журналом работы
  	* @return LogFileName

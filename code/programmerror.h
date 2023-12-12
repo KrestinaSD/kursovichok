@@ -33,7 +33,7 @@ public:
 	/**
  	* @brief Функция получения пути до журнала работы
  	* @param [in] string LogName - путь до файла логов
- 	* @details В этом методе устанавливается путь до файла с журналом работы
+ 	* @details В этом методе устанавливается путь до файла с журналом работы и проверяет на его 
  	* @return LogFileName
  	*/
     void setLogName(std::string LogName); ///<Функция, устанавливающая путь к файлу с логом ошибок
@@ -61,22 +61,22 @@ public:
  */
 
 class server_error: public std::invalid_argument {
-private:
-bool State = false; ///<Статус критичности ошибки
-public:
-/**
- @brief Конструктор ошибок с строкой в качестве параметра
- @param [in] what_arg, тип ошибки, const std::string.
- @param [in] critical, критическа ошибка - true, штатная - false, bool
-*/
-explicit server_error (const std::string& what_arg, bool critical = false):
-	std::invalid_argument(what_arg) {State = critical;}
-/**
- @brief Конструктор ошибок с си-строкой в качестве параметра
- @param [in] what_arg, тип ошибки, const char*.
- @param [in] critical, критическаZ ошибка - true, штатная - false, bool
-*/
-explicit server_error (const char* what_arg,  bool critical = false):
-	std::invalid_argument(what_arg) {State = critical;}
-bool getState() const {return State;} ///<Возвращает статус критичности ошибки
+	private:
+	bool State = false; ///<Статус критичности ошибки
+	public:
+	/**
+ 	@brief Конструктор ошибок с строкой в качестве параметра
+ 	@param [in] what_arg, тип ошибки, const std::string.
+ 	@param [in] critical, критическа ошибка - true, штатная - false, bool
+	*/
+	explicit server_error (const std::string& what_arg, bool critical = false):
+		std::invalid_argument(what_arg) {State = critical;}
+	/**
+ 	@brief Конструктор ошибок с си-строкой в качестве параметра
+ 	@param [in] what_arg, тип ошибки, const char*.
+ 	@param [in] critical, критическаZ ошибка - true, штатная - false, bool
+	*/
+	explicit server_error (const char* what_arg,  bool critical = false):
+		std::invalid_argument(what_arg) {State = critical;}
+	bool getState() const {return State;} ///<Возвращает статус критичности ошибки
 };

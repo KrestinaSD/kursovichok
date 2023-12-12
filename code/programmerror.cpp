@@ -10,12 +10,12 @@
 #include <iostream>
 
 void ErrorTracker::setLogName(std::string LogName){
-std::ofstream log(LogName, std::ios_base::app);
-if(!log.good()){
-		throw std::invalid_argument("Wrong log File Name");
-		return;}
-log.close();
-LogFileName = LogName;}
+	std::ofstream log(LogName, std::ios_base::app);
+	if(!log.good()){
+			throw std::invalid_argument("Wrong log File Name");}
+	log.close();
+	LogFileName = LogName;
+}
 
 std::string ErrorTracker::getDateTime() {
     time_t now = time(0);

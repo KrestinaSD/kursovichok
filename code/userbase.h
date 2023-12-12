@@ -22,7 +22,17 @@ class DB
 {
 private:
     char sep = ':'; ///<Разделитель идентификатора и пароля в базе данных
+    std::string path_to_userbase; ///< Путь до файла с журналом работы
 public:
+	/**
+ 	* @brief Конструтор класса без параметров
+ 	* @details В конструкторе идет проверка на существование файла с базой клиентов
+ 	*/
+	DB() {
+        if (!CheckFiles()) {
+            throw server_error(std::string("Неверное имя файла базы данных"), true);
+        }
+    }
 	std::map <std::string,std::string> DataBaseP; ///< Словарь с парами идентификатор:пароль
 	/**
  	* @brief Конструтор класса
@@ -36,4 +46,10 @@ public:
  	* @return True or False
  	*/
     bool IDcheck(std::string login);
+    /**
+ 	* @brief Функция проверки файлов
+ 	* @details В этом методе происходит проверка на "правильность" пути до файла с базой клиентов
+ 	* @return True or False
+ 	*/
+    bool CheckFiles();
 };
