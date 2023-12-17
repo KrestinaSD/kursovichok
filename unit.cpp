@@ -110,12 +110,13 @@ SUITE(CLIENTIC){
 	TEST(BAD_ID_CHECK){
 		DB db("test_base.txt");
     	CHECK_THROW(db.IDcheck("non_existing_id"), server_error);
-    
 	}
+	
 	TEST(ID_CHECK){
 		DB db("test_base.txt");
 		CHECK(db.IDcheck("vasya"));
 	}
+	
 }
 
 //Тесты, связанные с логерами
