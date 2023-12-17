@@ -17,9 +17,19 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <cryptopp/cryptlib.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/files.h>
+#include <cryptopp/filters.h>
+#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+#include <cryptopp/md5.h>
+#include <fstream>
+#include <random>
+#include <sstream>
+#include <exception>
+#include <typeinfo>
 #include "programmerror.h"
 #include "logger.h"
-#include "auth.h"
 #include "calculator.h"
 #include "userbase.h"
 #include "interface.h"
@@ -55,6 +65,7 @@ public:
  	* установка сервера в режим ожидания соединений.
  	*/
 	communicator(unsigned int port);  
+	communicator(){};
 	/**
  	* @brief Функция принятия соединения
  	* @details В этом методе происходит принятие соединения от клиента. 
@@ -82,5 +93,13 @@ public:
     std::string GenHash(const std::string& password);
     bool CompareHashes(std::string ClientHash);
     void getpass(std::string pass);
+    /**
+ 	* @brief Метод для установки соли
+  	* @details Этот метод позволяет установить значение соли. Создан для модульных тестов.
+ 	* @param salt Новое значение соли
+ 	*/
+	void setSALT(const std::string& salt) {
+ 	   SALT = salt;
+	}
     
 };

@@ -1,5 +1,4 @@
 #include "interface.h"
-#include "auth.h"
 #include "calculator.h"
 #include "userbase.h"
 #include <iostream>

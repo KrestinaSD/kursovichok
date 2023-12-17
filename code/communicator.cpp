@@ -111,6 +111,7 @@ bool communicator::CompareHashes(std::string ClientHash) {
     std::string ServerHash = GenHash(password);
 
     if (ClientHash != ServerHash) {
+    	
         throw server_error(std::string("Invalid Hash"));
     }
 	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
@@ -191,7 +192,7 @@ void communicator::conversation(unsigned int port, std::string LogName, DB new_d
 			exit(1);
 		}
 		communicator ERR_send_manager(port);
-        ERR_send_manager.sending(sock, Auth("NO").ERRmsg, sizeof(Auth("NO").ERRmsg));
+        ERR_send_manager.sending(sock, ERRmsg, sizeof(ERRmsg));
         close(sock);
     }
 }

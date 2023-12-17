@@ -1,5 +1,5 @@
-#include "code/auth.h"
-#include "code/auth.cpp"
+//#include "code/auth.h"
+//#include "code/auth.cpp"
 #include "code/calculator.h"
 #include "code/calculator.cpp"
 #include "code/communicator.h"
@@ -20,47 +20,53 @@ const double inf = std::numeric_limits<double>::infinity();
 //Тесты сравнения хешей CompareHashes в модуле аутентификации
 SUITE(HAHA){
 	TEST(SIZE_SALT){
-		Auth auth("password");
-		std::string salt = auth.GenSALT();
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
     	CHECK(salt.size() == 16);
 	}
 	TEST(BAD_SALT){
-    	Auth auth("password");
-    	std::string salt = auth.GenSALT();
-    	std::string hash = auth.GenHash("password");
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
+    	std::string hash = cm.GenHash("password");
     	// Устанавливаем неправильный SALT
-    	auth.setSALT("0000");
-    	CHECK_THROW(auth.CompareHashes(hash), server_error);
+    	cm.setSALT("0000");
+    	CHECK_THROW(cm.CompareHashes(hash), server_error);
 	}
 	TEST(EMPTY_SALT){
-		Auth auth("password");
-    	std::string salt = auth.GenSALT();
-    	std::string hash = auth.GenHash("password");
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
+    	std::string hash = cm.GenHash("password");
     	// Устанавливаем пустой SALT
-    	auth.setSALT("");
-    	CHECK_THROW(auth.CompareHashes(hash), server_error);
+    	cm.setSALT("");
+    	CHECK_THROW(cm.CompareHashes(hash), server_error);
 	}
 
 	TEST(BAD_PASS){
-		 Auth auth("password");
-    	std::string salt = auth.GenSALT(); 
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
     	// делаем хэширование с "плохим паролем"
-    	std::string badHash = auth.GenHash("badpassword");
-    	CHECK_THROW(auth.CompareHashes(badHash), server_error);
+    	std::string badHash = cm.GenHash("badpassword");
+    	CHECK_THROW(cm.CompareHashes(badHash), server_error);
 	}
 	
 	TEST(EMPTY_PASS){
-		Auth auth("password");
-    	std::string salt = auth.GenSALT();
-    	std::string badHash = auth.GenHash("");
-    	CHECK_THROW(auth.CompareHashes(badHash), server_error);
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
+    	std::string badHash = cm.GenHash("");
+    	CHECK_THROW(cm.CompareHashes(badHash), server_error);
 	}
 
 	TEST(NORM){
-		Auth auth("password");
-   		std::string salt = auth.GenSALT();
-    	std::string goodHash = auth.GenHash("password");
-    	CHECK(auth.CompareHashes(goodHash));
+		communicator cm;
+		cm.getpass("password");
+		std::string salt = cm.GenSALT();
+    	std::string goodHash = cm.GenHash("password");
+    	CHECK(cm.CompareHashes(goodHash));
 	}
 }
 

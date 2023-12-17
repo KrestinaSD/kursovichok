@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -g -Wall -Wextra
 LDFLAGS= -lpthread -lcrypto++
-SOURCES= main.cpp auth.cpp interface.cpp programmerror.cpp communicator.cpp userbase.cpp calculator.cpp logger.cpp
+SOURCES= main.cpp interface.cpp programmerror.cpp communicator.cpp userbase.cpp calculator.cpp logger.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=server
 
