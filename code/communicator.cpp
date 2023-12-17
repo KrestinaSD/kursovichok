@@ -107,8 +107,6 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
 			if (USRlogIn[i] == '\n'){
 				USRlogIn.pop_back();}
 		}
-		
-		//new_db.IDcheck(USRlogIn);
 		if(DataBaseP.find(USRlogIn) == DataBaseP.end()) {
                     close(work_sock);
                     throw server_error("Invalid ID");
@@ -147,14 +145,16 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     		close(work_sock);
     		throw server_error("Receiving error");
     	}  
+    	
         for(unsigned int i =0; i< num_vectors; i++) {
         	rc = recv(work_sock, &vector_len, sizeof vector_len, 0);
         	if (rc < 0){
     			close(work_sock);
     			throw server_error("Receiving error");
     		}
-        	double int_buf[vector_len];
-        	rc = recv(work_sock, &int_buf, vector_len*sizeof(double), 0);
+    		
+        	std::vector<double> int_buf(vector_len);
+    		rc = recv(work_sock, int_buf.data(), vector_len*sizeof(double), 0);
         	if (rc < 0){
     			close(work_sock);
     			throw server_error("Receiving error");
@@ -188,7 +188,7 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
 			exit(1);
 		}
         close(sckt);
-    }
+    } 
 }
 
 

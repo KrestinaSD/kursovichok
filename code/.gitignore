@@ -2,4 +2,4 @@
 server
 log.*
 client_double
-log
+client_uint16_t

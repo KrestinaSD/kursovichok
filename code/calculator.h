@@ -9,7 +9,9 @@
 #include <vector>
 #include <iostream>
 #include <exception>
+#include <limits>
 #include "programmerror.h"
+
 
 /** 
  * @brief Класс для вычисления среднего арифметического вектора
