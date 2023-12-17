@@ -5,7 +5,8 @@ double Average::average(std::vector<double>& arr) {
 		try{
 		
 		if (arr.empty()){
-			throw server_error(std::string("Count Error"));}
+			throw server_error("Count Error");
+		}
 		
 		for (std::vector<double>::iterator it = arr.begin(); it != arr.end(); ++it){
 			std::cout << '\t' << *it;
@@ -19,7 +20,7 @@ double Average::average(std::vector<double>& arr) {
 		}
 		
 		}catch(std::exception &e){
-			throw server_error(std::string("Count Error"));
+			throw server_error("Count Error");
 		}
 		result = sum/arr.size();
 		

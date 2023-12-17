@@ -6,7 +6,7 @@ DB::DB(std::string DBName)
     	std::string path_to_userbase = DBName;
         std::ifstream file(path_to_userbase);
 		if(!file.good()){
-			throw server_error(std::string("Wrong DB File Name"), true);
+			throw server_error("Wrong DB File Name", true);
 		} 
         std::string Pair;
         while(getline(file, Pair)) {
@@ -18,7 +18,7 @@ DB::DB(std::string DBName)
 bool DB::IDcheck(std::string login)
     {
 			if (DataBaseP.count(login) != 1){
-				throw server_error(std::string("Invalid ID"), false);}
+				throw server_error("Invalid ID");}
 			
         return DataBaseP.count(login) == 1;
     }

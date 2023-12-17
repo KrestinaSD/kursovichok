@@ -87,19 +87,18 @@ public:
  	* @brief Функция "разговора" с клиентом.
  	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
  	*/
-    void conversation(unsigned int port, std::string LogName, DB new_db, int sock); 
+    void conversation(unsigned int port,  DB new_db, int sock); 
     
     std::string GenSALT();
     std::string GenHash(const std::string& password);
     bool CompareHashes(std::string ClientHash);
+    #if _UNITTEST_ != 1
     void getpass(std::string pass);
-    /**
- 	* @brief Метод для установки соли
-  	* @details Этот метод позволяет установить значение соли. Создан для модульных тестов.
- 	* @param salt Новое значение соли
- 	*/
+    #endif
+    #if _UNITTEST_ != 1
 	void setSALT(const std::string& salt) {
  	   SALT = salt;
 	}
+	#endif
     
 };

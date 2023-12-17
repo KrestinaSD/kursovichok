@@ -12,7 +12,7 @@ communicator::communicator(unsigned int port){
 // Создание сокета
     sckt = socket(AF_INET, SOCK_STREAM, 0);
     if(sckt < 0) {
-        throw server_error(std::string("Socket creation error"), true);
+        throw server_error("Socket creation error", true);
     }
     logi.writelog("Socket creation OK");
      // Задание параметров адреса сервера
@@ -23,14 +23,14 @@ communicator::communicator(unsigned int port){
     // Привязка сокета к адресу
     int rc = bind(sckt, (struct sockaddr *)&addr, sizeof(addr));
     if(rc < 0) {
-        throw server_error(std::string("Socket bind error"), true);
+        throw server_error("Socket bind error", true);
     }
     logi.writelog("Socket bind OK");
 
     // Начало прослушивания входящих соединений
     int l = listen(sckt, 1);
     if (l < 0) {
-    	throw server_error(std::string("Listening error"), true);
+    	throw server_error("Listening error", true);
     }
 }
 
@@ -39,13 +39,12 @@ int communicator::accepting() {
     sockaddr_in * client_addr = new sockaddr_in;
     socklen_t len = sizeof (sockaddr_in);
     // Принятие входящего соединения на сокете sock
-    int scktr = accept(sckt, (sockaddr*)(client_addr), &len);
-    if (scktr < 0){
-        // Выброс исключения server_error
-        throw server_error(std::string("Accepting error"), false);
+    int work_sock = accept(sckt, (sockaddr*)(client_addr), &len);
+    if (work_sock < 0){
+        throw server_error("Accepting error", false);
     }
     logi.writelog("Accepting OK");
-    return scktr;
+    return work_sock;
 }
 
 // Функция receiving, которая принимает данные из сокета
@@ -53,8 +52,7 @@ int communicator::receiving(int sock, void*buf, int size){
     // Прием данных из сокета sock в буфер buf размера size
     int rc = recv(sock, buf, size, 0);
     if (rc < 0){
-        // Выброс исключения server_error
-        throw server_error(std::string("Receiving error"), false);
+        throw server_error("Receiving error", false);
     }
     logi.writelog("Receiving OK");
     // Возвращение количества принятых байт
@@ -67,7 +65,7 @@ void communicator::sending(int sock, void*buf, int sizeb){
     int rc = send(sock, buf, sizeb, 0);
     if (rc < 0){
         // Выброс исключения server_error
-        throw server_error(std::string("Sending error"));
+        throw server_error("Sending error");
     }
     logi.writelog("Sending OK");
 }
@@ -111,8 +109,7 @@ bool communicator::CompareHashes(std::string ClientHash) {
     std::string ServerHash = GenHash(password);
 
     if (ClientHash != ServerHash) {
-    	
-        throw server_error(std::string("Invalid Hash"));
+        throw server_error("Invalid Hash");
     }
 	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
     return (ClientHash.compare(ServerHash) == 0);
@@ -124,7 +121,7 @@ void communicator::getpass(std::string pass){
  
  
  
-void communicator::conversation(unsigned int port, std::string LogName, DB new_db, int sock)
+void communicator::conversation(unsigned int port, DB new_db, int sock)
 {
 	try{
     char buf[2048];
@@ -185,10 +182,10 @@ void communicator::conversation(unsigned int port, std::string LogName, DB new_d
        logi.writelog("Client disconnected");
        
     } catch (const server_error & e) {
-		ErrorTracker new_ErrTr;
-		new_ErrTr.setLogName(LogName);
-		new_ErrTr.write_log(e.what(), e.getState());
-		if (e.getState()){
+		std::stringstream ss;
+    	ss << "Error: " << e.what() << ", State: " << e.getState();
+    	logi.writelog(ss.str());
+          if (e.getState() == "Критическая"){
 			exit(1);
 		}
 		communicator ERR_send_manager(port);

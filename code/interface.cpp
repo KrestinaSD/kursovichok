@@ -16,10 +16,6 @@ int interface::Opts(int argc, char **argv)
     // Создаем unordered_map для хранения аргументов командной строки
     std::unordered_map<char, std::string> args;
     int opt;
-   /*if (argc < 2) {
-    usage(argv[0]); // Выводим справку
-    return 1; // Завершаем программу
-    } else {*/
     while ((opt = getopt(argc, argv, "b:l:p:h")) != -1) {
         switch (opt) {
         case 'b':
@@ -44,15 +40,8 @@ int interface::Opts(int argc, char **argv)
         Port = std::stoi(args['p']);
     }
     
-    /***************************
-    *
-    * Инициализация элементов класса
-    *
-    *****************************/
-	ErrorTracker ErrTr;
 	Logger logger;
     try{
-    	ErrTr.setLogName(LogFileName);
     	logger.set_path(LogFileName);
     	DB new_db(DataBaseName);
     	communicator main_manager(Port);
@@ -62,17 +51,18 @@ int interface::Opts(int argc, char **argv)
         	int sock = main_manager.accepting();
         	std::cout<<"Client connected"<<std::endl;
         	logger.writelog("Client connected");
-        	main_manager.conversation(Port,  LogFileName, new_db, sock);
+        	main_manager.conversation(Port,new_db, sock);
     	}
     	
 	} catch (const server_error & e) {
-		ErrTr.write_log(e.what(), e.getState());
-        if (e.getState()){
+		std::stringstream ss;
+    	ss << "Error: " << e.what() << ", State: " << e.getState();
+    	logger.writelog(ss.str());
+          if (e.getState() == "Критическая"){
 			exit(1);
 		}
     }
     return 0;
-   // }
 }
 
 void interface::usage(const char* progName)

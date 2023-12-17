@@ -1,5 +1,3 @@
-//#include "code/auth.h"
-//#include "code/auth.cpp"
 #include "code/calculator.h"
 #include "code/calculator.cpp"
 #include "code/communicator.h"
@@ -9,7 +7,6 @@
 #include "code/logger.h"
 #include "code/logger.cpp"
 #include "code/programmerror.h"
-#include "code/programmerror.cpp"
 #include "code/userbase.h"
 #include "code/userbase.cpp"
 #include <UnitTest++/UnitTest++.h>

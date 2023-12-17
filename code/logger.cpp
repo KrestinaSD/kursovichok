@@ -6,7 +6,7 @@ using namespace std;
 void Logger::set_path(std::string LogName) {
 	std::ofstream log(LogName, std::ios_base::app);
 	if(!log.good()){
-			throw std::invalid_argument("Wrong log File Name");
+			throw server_error("Wrong log File Name");
 	}
 	log.close();
     path_to_logfile = LogName;
@@ -23,7 +23,7 @@ std::string Logger::getDateTime() {
 
 int Logger::writelog(std::string s) {
 	if (s.empty()) {
-        throw std::invalid_argument("Empty message");
+        throw server_error("Empty message");
     }
     std::ofstream filelog;
     filelog.open(path_to_logfile, std::ios_base::out | std::ios_base::app);
