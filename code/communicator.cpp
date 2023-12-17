@@ -72,6 +72,57 @@ void communicator::sending(int sock, void*buf, int sizeb){
     logi.writelog("Sending OK");
 }
 
+std::string communicator::GenSALT()
+{
+    std::random_device rd;
+    std::default_random_engine generator(rd());
+    std::uniform_int_distribution<long long unsigned> distribution(0,0xFFFFFFFFFFFFFFFF);
+    unsigned long long numericsalt = distribution(generator);
+    std::stringstream stream;
+    stream << std::hex << numericsalt;
+    std::string strsalt(stream.str());
+    for (long unsigned int i = 0; i <= strsalt.size(); i++) {
+        strsalt[i] = toupper(strsalt[i]);
+    }
+    if (strsalt.size() < 16) {
+        std::string strsalttemp =strsalt;
+        for (unsigned i = strsalt.size(); i < 16; i++) {
+            strsalttemp.insert(strsalttemp.begin(), '0');
+        }
+        strsalt = strsalttemp;
+    }
+    SALT = strsalt;
+    return SALT;
+}
+
+std::string communicator::GenHash(const std::string& password) {
+    std::string msg = SALT + password;
+    std::string strHash;
+
+    CryptoPP::Weak::MD5 hash;
+    CryptoPP::StringSource ss(msg, true,
+        new CryptoPP::HashFilter(hash,
+            new CryptoPP::HexEncoder(
+                new CryptoPP::StringSink(strHash))));
+    return strHash;
+}
+
+bool communicator::CompareHashes(std::string ClientHash) {
+    std::string ServerHash = GenHash(password);
+
+    if (ClientHash != ServerHash) {
+        throw server_error(std::string("Invalid Hash"));
+    }
+	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
+    return (ClientHash.compare(ServerHash) == 0);
+}
+
+void communicator::getpass(std::string pass){
+ 	password = pass;
+}
+ 
+ 
+ 
 void communicator::conversation(unsigned int port, std::string LogName, DB new_db, int sock)
 {
 	try{
@@ -84,8 +135,13 @@ void communicator::conversation(unsigned int port, std::string LogName, DB new_d
 			USRlogIn.pop_back();}
 	}
    		new_db.IDcheck(USRlogIn);
-        Auth new_auth(new_db.DataBaseP[USRlogIn]);
-        string str_salt = new_auth.GenSALT();
+   		/////////////////////////////////
+        //Auth new_auth(new_db.DataBaseP[USRlogIn]);
+        getpass(new_db.DataBaseP[USRlogIn]);
+        ////////////////////////////////////
+        //string str_salt = new_auth.GenSALT();
+        std::string str_salt = GenSALT();
+        /////////////////////////////////////
         char salt_buf[16];
         strcpy(salt_buf, str_salt.c_str());
         sending(sock, salt_buf, sizeof(salt_buf));
@@ -97,8 +153,12 @@ void communicator::conversation(unsigned int port, std::string LogName, DB new_d
 				pass.pop_back();
 			}
 		}
-        new_auth.CompareHashes(pass);
-        sending(sock, new_auth.OKmsg, sizeof(new_auth.OKmsg));
+		
+		/////////////////////////////////
+        //new_auth.CompareHashes(pass);
+        CompareHashes(pass);
+        ////////////////////////////////////
+        sending(sock, OKmsg, sizeof(OKmsg));
         uint32_t num_vectors;
         uint32_t vector_len;
         bytes_read = receiving(sock, &num_vectors, sizeof num_vectors);
@@ -112,13 +172,10 @@ void communicator::conversation(unsigned int port, std::string LogName, DB new_d
         	for(unsigned int i = 0; i < vector_len; i++) {
                     arr.push_back(int_buf[i]);
             }
-            //
-            //вычисления
-            //
+
             Average res;
             double result = res.average(arr);
             sending(sock, &result, sizeof(double));
-            logi.writelog("Sending OK");
        }
        std::cout<<"Calculations were successful\n";
        logi.writelog("Calculating OK");

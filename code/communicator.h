@@ -40,7 +40,13 @@ private:
     const char* Adress = "127.0.0.1"; ///< Сетевой адрес сервера
     struct sockaddr_in addr; ///< Структура sockaddr_in
     int sckt; ///< Основной сокет 
+    std::string password; ///< Пароль клиента
+    std::string SALT; ///< Соль для вычисления хэша
+    std::string strHash; ///< Хэш
+    
 public:
+	char ERRmsg[3] = {'E', 'R','R'}; ///< Сообщение, отсылаемое клиенту при ошибке его обработки
+    char OKmsg[2] = {'O', 'K'}; ///< Сообщение, отсылаемое клиенту при успешной авторизации
 	/**
  	* @brief Конструтор класса
  	* @param [in] port Порт, на котором работает сервер
@@ -48,8 +54,12 @@ public:
  	* установка бинда по созданному сокету,
  	* установка сервера в режим ожидания соединений.
  	*/
-	communicator(unsigned int port); 
-	
+	communicator(unsigned int port);  
+	/**
+ 	* @brief Функция принятия соединения
+ 	* @details В этом методе происходит принятие соединения от клиента. 
+ 	* @return scktr
+ 	*/
 	int accepting();
 	/**
  	* @brief Функция получения данных от клиента
@@ -67,4 +77,10 @@ public:
  	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
  	*/
     void conversation(unsigned int port, std::string LogName, DB new_db, int sock); 
+    
+    std::string GenSALT();
+    std::string GenHash(const std::string& password);
+    bool CompareHashes(std::string ClientHash);
+    void getpass(std::string pass);
+    
 };
