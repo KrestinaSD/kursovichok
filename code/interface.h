@@ -16,7 +16,7 @@
 class interface
 {
 private:
-    std::string DataBaseName = "bas"; ///< Путь к файлу с базой данных
+    std::string DataBaseName = "bas.txt"; ///< Путь к файлу с базой данных
     std::string LogFileName = "log"; ///< Путь к файлу для записи логов
     int Port = 33333; ///< Порт, на котором работает сервер
     void usage(const char* progName); ///< Вывод подсказки и останов

@@ -13,11 +13,6 @@
 
 int interface::Opts(int argc, char **argv)
 {
-	/*********************************
-	*
-	*   разбор пкс
-	*
-	*********************************/
     // Создаем unordered_map для хранения аргументов командной строки
     std::unordered_map<char, std::string> args;
     int opt;
@@ -57,15 +52,11 @@ int interface::Opts(int argc, char **argv)
 	ErrorTracker ErrTr;
 	Logger logger;
     try{
-        //CheckFiles();
     	ErrTr.setLogName(LogFileName);
     	logger.set_path(LogFileName);
     	DB new_db(DataBaseName);
     	communicator main_manager(Port);
-    	main_manager.bindSocket();
     	std::cout<<"The server start"<<std::endl;
-        logger.writelog("The server started");
-    	main_manager.listenSocket();
     	logger.writelog("The server listen sockets");
     	while (true) {
         	int sock = main_manager.accepting();
@@ -75,7 +66,6 @@ int interface::Opts(int argc, char **argv)
     	}
     	
 	} catch (const server_error & e) {
-	    logger.writelog(e.what());
 		ErrTr.write_log(e.what(), e.getState());
         if (e.getState()){
 			exit(1);
@@ -85,11 +75,6 @@ int interface::Opts(int argc, char **argv)
    // }
 }
 
-/*****
-*
-* подсказка
-*
-*****/
 void interface::usage(const char* progName)
 {
     std::cout<<"Использование: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port] \n";

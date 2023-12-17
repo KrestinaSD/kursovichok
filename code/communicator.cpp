@@ -19,25 +19,19 @@ communicator::communicator(unsigned int port){
     addr.sin_family = AF_INET; // Семейство адресов
     addr.sin_port = htons(port); // Порт, на котором будет работать сервер
     addr.sin_addr.s_addr = inet_addr(Adress); // адрес
-}
 
-
-void communicator::bindSocket() {
     // Привязка сокета к адресу
     int rc = bind(sckt, (struct sockaddr *)&addr, sizeof(addr));
     if(rc < 0) {
         throw server_error(std::string("Socket bind error"), true);
     }
     logi.writelog("Socket bind OK");
-}
 
-void communicator::listenSocket() {
     // Начало прослушивания входящих соединений
     int l = listen(sckt, 1);
     if (l < 0) {
     	throw server_error(std::string("Listening error"), true);
     }
-    logi.writelog("Listening OK");
 }
 
 int communicator::accepting() {

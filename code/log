@@ -749,3 +749,255 @@
 12.12.2023 21:49:17 Sending OK
 12.12.2023 21:49:17 Calculating OK
 12.12.2023 21:49:17 Client disconnected
+14.12.2023 18:07:17 Socket creation OK
+14.12.2023 18:07:17 Socket bind error
+14.12.2023 18:07:1 Socket bind error Критическая
+14.12.2023 18:07:48 Socket creation OK
+14.12.2023 18:07:4 Socket bind error Критическая
+14.12.2023 18:10:32 Socket creation OK
+14.12.2023 18:10:32 Socket bind OK
+14.12.2023 18:10:32 The server started
+14.12.2023 18:10:32 Listening OK
+14.12.2023 18:10:32 The server listen sockets
+17.12.2023 14:26:25 Socket creation OK
+17.12.2023 14:26:25 Socket bind OK
+17.12.2023 14:26:25 Listening OK
+17.12.2023 14:26:25 The server started
+17.12.2023 14:26:25 The server listen sockets
+17.12.2023 14:28:58 Socket creation OK
+17.12.2023 14:28:58 Socket bind OK
+17.12.2023 14:28:58 Listening OK
+17.12.2023 14:28:58 The server started
+17.12.2023 14:28:58 The server listen sockets
+17.12.2023 14:29:47 Socket creation OK
+17.12.2023 14:29:47 Socket bind OK
+17.12.2023 14:29:47 The server started
+17.12.2023 14:29:47 Listening OK
+17.12.2023 14:29:47 The server listen sockets
+17.12.2023 14:31:23 Socket creation OK
+17.12.2023 14:31:23 Socket bind OK
+17.12.2023 14:31:23 The server started
+17.12.2023 14:31:23 Listening OK
+17.12.2023 14:31:23 The server listen sockets
+17.12.2023 14:35:44 Socket creation OK
+17.12.2023 14:35:44 Socket bind OK
+17.12.2023 14:35:44 The server started
+17.12.2023 14:35:44 Listening OK
+17.12.2023 14:35:44 The server listen sockets
+17.12.2023 14:39:1 Wrong DB File Name Критическая
+17.12.2023 14:40:03 Socket creation OK
+17.12.2023 14:40:03 Socket bind OK
+17.12.2023 14:40:03 The server started
+17.12.2023 14:40:03 The server listen sockets
+17.12.2023 14:40:06 Accepting OK
+17.12.2023 14:40:06 Client connected
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Sending OK
+17.12.2023 14:40:06 Receiving OK
+17.12.2023 14:40:07 Receiving OK
+17.12.2023 14:40:07 Sending OK
+17.12.2023 14:40:07 Sending OK
+17.12.2023 14:40:07 Receiving OK
+17.12.2023 14:40:07 Receiving OK
+17.12.2023 14:40:07 Sending OK
+17.12.2023 14:40:07 Sending OK
+17.12.2023 14:40:07 Calculating OK
+17.12.2023 14:40:07 Client disconnected
+17.12.2023 14:40:13 Accepting OK
+17.12.2023 14:40:13 Client connected
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Receiving OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Sending OK
+17.12.2023 14:40:13 Calculating OK
+17.12.2023 14:40:13 Client disconnected
+17.12.2023 14:41:27 Accepting OK
+17.12.2023 14:41:27 Client connected
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Calculating OK
+17.12.2023 14:41:27 Client disconnected
+17.12.2023 14:41:27 Accepting OK
+17.12.2023 14:41:27 Client connected
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Receiving OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Sending OK
+17.12.2023 14:41:27 Calculating OK
+17.12.2023 14:41:27 Client disconnected
+17.12.2023 14:42:37 Socket creation OK
+17.12.2023 14:42:37 Socket bind OK
+17.12.2023 14:42:37 The server started
+17.12.2023 14:42:37 The server listen sockets
+17.12.2023 14:42:40 Accepting OK
+17.12.2023 14:42:40 Client connected
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Receiving OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Sending OK
+17.12.2023 14:42:40 Calculating OK
+17.12.2023 14:42:40 Client disconnected
+17.12.2023 14:45:11 Socket creation OK
+17.12.2023 14:45:11 Socket bind OK
+17.12.2023 14:45:11 The server listen sockets
+17.12.2023 14:45:16 Accepting OK
+17.12.2023 14:45:16 Client connected
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Sending OK
+17.12.2023 14:45:16 Receiving OK
+17.12.2023 14:45:17 Receiving OK
+17.12.2023 14:45:17 Sending OK
+17.12.2023 14:45:17 Sending OK
+17.12.2023 14:45:17 Calculating OK
+17.12.2023 14:45:17 Client disconnected
+17.12.2023 14:46:15 Socket creation OK
+17.12.2023 14:46:1 Socket bind error Критическая
+17.12.2023 14:46:31 Socket creation OK
+17.12.2023 14:46:31 Socket bind OK
+17.12.2023 14:46:31 The server listen sockets
+17.12.2023 14:46:33 Accepting OK
+17.12.2023 14:46:33 Client connected
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Calculating OK
+17.12.2023 14:46:33 Client disconnected
+17.12.2023 14:46:33 Accepting OK
+17.12.2023 14:46:33 Client connected
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Receiving OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Sending OK
+17.12.2023 14:46:33 Calculating OK
+17.12.2023 14:46:33 Client disconnected
