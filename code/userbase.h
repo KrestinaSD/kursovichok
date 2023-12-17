@@ -23,23 +23,18 @@ class DB
 private:
     char sep = ':'; ///<Разделитель идентификатора и пароля в базе данных
     std::string path_to_userbase; ///< Путь до файла с журналом работы
+    std::map <std::string,std::string> DataBaseP; ///< Словарь с парами идентификатор:пароль
 public:
-	/**
- 	* @brief Конструтор класса без параметров
- 	* @details В конструкторе идет проверка на существование файла с базой клиентов
- 	*/
-	DB() {};
-	std::map <std::string,std::string> DataBaseP; ///< Словарь с парами идентификатор:пароль
+	
 	/**
  	* @brief Конструтор класса
  	* @param [in] DBName - путь до файла с данными клиентов
  	* @details В этом конструкторе происходит открытие файла, получение данных, заполнение словаря, закрытие словаря
  	*/
     DB(std::string DBName);
-	/**
- 	* @brief Функция проверки наличия ID  в файле базы клиентов
- 	* @details В этом методе происходит проверка на наличие ID в файле базы клиентов
- 	* @return True or False
- 	*/
-    bool IDcheck(std::string login);
+	
+     std::map<std::string,std::string> get_data()
+    {
+        return DataBaseP;
+    }
 };

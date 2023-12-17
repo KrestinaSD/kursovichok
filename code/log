@@ -1,25 +1,71 @@
-17.12.2023 17:56:33 Error: Socket bind error, State: Критическая
-17.12.2023 18:10:05 Socket creation OK
-17.12.2023 18:10:05 Socket bind OK
-17.12.2023 18:10:05 The server listen sockets
-17.12.2023 18:10:07 Accepting OK
-17.12.2023 18:10:07 Client connected
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Receiving OK
-17.12.2023 18:10:07 Sending OK
-17.12.2023 18:10:07 Calculating OK
-17.12.2023 18:10:07 Client disconnected
+17.12.2023 19:51:38 Socket creation OK
+17.12.2023 19:51:38 Socket bind OK
+17.12.2023 19:51:38 The server started
+17.12.2023 19:51:40 Accepting OK
+17.12.2023 19:53:11 Socket creation OK
+17.12.2023 19:53:11 Socket bind OK
+17.12.2023 19:53:11 The server started
+17.12.2023 19:53:42 Accepting OK
+17.12.2023 19:53:42 Calculating OK
+17.12.2023 19:53:42 Client disconnected
+17.12.2023 19:53:54 Accepting OK
+17.12.2023 19:53:54 Calculating OK
+17.12.2023 19:53:54 Client disconnected
+17.12.2023 19:54:08 Accepting OK
+17.12.2023 19:54:08 Calculating OK
+17.12.2023 19:54:08 Client disconnected
+17.12.2023 19:57:58 Socket creation OK
+17.12.2023 19:57:58 Error: Socket bind error, State: Критическая
+17.12.2023 19:58:26 Socket creation OK
+17.12.2023 19:58:26 Error: Socket bind error, State: Критическая
+17.12.2023 19:59:06 Socket creation OK
+17.12.2023 19:59:06 Socket bind OK
+17.12.2023 19:59:06 The server started
+17.12.2023 19:59:11 Accepting OK
+17.12.2023 19:59:12 Calculating OK
+17.12.2023 19:59:12 Client disconnected
+17.12.2023 19:59:17 Accepting OK
+17.12.2023 19:59:18 Calculating OK
+17.12.2023 19:59:18 Client disconnected
+17.12.2023 19:59:20 Accepting OK
+17.12.2023 19:59:20 Calculating OK
+17.12.2023 19:59:20 Client disconnected
+17.12.2023 19:59:24 Accepting OK
+17.12.2023 19:59:24 Calculating OK
+17.12.2023 19:59:24 Client disconnected
+17.12.2023 19:59:32 Accepting OK
+17.12.2023 19:59:32 Calculating OK
+17.12.2023 19:59:32 Client disconnected
+17.12.2023 19:59:34 Accepting OK
+17.12.2023 19:59:35 Calculating OK
+17.12.2023 19:59:35 Client disconnected
+17.12.2023 19:59:40 Accepting OK
+17.12.2023 19:59:40 Calculating OK
+17.12.2023 19:59:40 Client disconnected
+17.12.2023 20:00:01 Accepting OK
+17.12.2023 20:00:01 Calculating OK
+17.12.2023 20:00:01 Client disconnected
+17.12.2023 20:00:07 Accepting OK
+17.12.2023 20:00:07 Calculating OK
+17.12.2023 20:00:07 Client disconnected
+17.12.2023 20:00:10 Accepting OK
+17.12.2023 20:00:10 Calculating OK
+17.12.2023 20:00:10 Client disconnected
+17.12.2023 20:00:12 Accepting OK
+17.12.2023 20:00:12 Calculating OK
+17.12.2023 20:00:12 Client disconnected
+17.12.2023 20:00:32 Accepting OK
+17.12.2023 20:00:33 Calculating OK
+17.12.2023 20:00:33 Client disconnected
+17.12.2023 20:00:38 Accepting OK
+17.12.2023 20:00:39 Calculating OK
+17.12.2023 20:00:39 Client disconnected
+17.12.2023 20:00:43 Accepting OK
+17.12.2023 20:00:43 Calculating OK
+17.12.2023 20:00:43 Client disconnected
+17.12.2023 20:15:50 Accepting OK
+17.12.2023 20:15:50 Calculating OK
+17.12.2023 20:15:50 Client disconnected
+17.12.2023 20:15:55 Accepting OK
+17.12.2023 20:15:55 Calculating OK
+17.12.2023 20:15:55 Client disconnected

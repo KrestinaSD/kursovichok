@@ -42,17 +42,10 @@ int interface::Opts(int argc, char **argv)
     
 	Logger logger;
     try{
+    	communicator main_manager;
     	logger.set_path(LogFileName);
     	DB new_db(DataBaseName);
-    	communicator main_manager(Port);
-    	std::cout<<"The server start"<<std::endl;
-    	logger.writelog("The server listen sockets");
-    	while (true) {
-        	int sock = main_manager.accepting();
-        	std::cout<<"Client connected"<<std::endl;
-        	logger.writelog("Client connected");
-        	main_manager.conversation(Port,new_db, sock);
-    	}
+    	main_manager.conversation(Port, new_db.get_data());
     	
 	} catch (const server_error & e) {
 		std::stringstream ss;

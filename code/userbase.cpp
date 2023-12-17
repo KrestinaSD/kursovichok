@@ -15,11 +15,5 @@ DB::DB(std::string DBName)
         file.close();
     }
 
-bool DB::IDcheck(std::string login)
-    {
-			if (DataBaseP.count(login) != 1){
-				throw server_error("Invalid ID");}
-			
-        return DataBaseP.count(login) == 1;
-    }
+
 

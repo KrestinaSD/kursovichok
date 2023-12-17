@@ -103,17 +103,6 @@ SUITE(CLIENTIC){
 	TEST(BAD_PATH){
 		CHECK_THROW(DB("no/base/file.txt"), server_error);
 	}
-	
-	TEST(BAD_ID_CHECK){
-		DB db("test_base.txt");
-    	CHECK_THROW(db.IDcheck("non_existing_id"), server_error);
-	}
-	
-	TEST(ID_CHECK){
-		DB db("test_base.txt");
-		CHECK(db.IDcheck("vasya"));
-	}
-	
 }
 
 //Тесты, связанные с логерами

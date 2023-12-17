@@ -46,7 +46,6 @@
 class communicator
 {
 private:
-    unsigned int Port; ///< Порт, на котором работает сервер
     const char* Adress = "127.0.0.1"; ///< Сетевой адрес сервера
     struct sockaddr_in addr; ///< Структура sockaddr_in
     int sckt; ///< Основной сокет 
@@ -55,45 +54,22 @@ private:
     std::string strHash; ///< Хэш
     
 public:
-	char ERRmsg[3] = {'E', 'R','R'}; ///< Сообщение, отсылаемое клиенту при ошибке его обработки
-    char OKmsg[2] = {'O', 'K'}; ///< Сообщение, отсылаемое клиенту при успешной авторизации
-	/**
- 	* @brief Конструтор класса
- 	* @param [in] port Порт, на котором работает сервер
- 	* @details В этом конструкторе происходит создание сокета, 
- 	* установка бинда по созданному сокету,
- 	* установка сервера в режим ожидания соединений.
- 	*/
-	communicator(unsigned int port);  
+	  
 	communicator(){};
-	/**
- 	* @brief Функция принятия соединения
- 	* @details В этом методе происходит принятие соединения от клиента. 
- 	* @return scktr
- 	*/
-	int accepting();
-	/**
- 	* @brief Функция получения данных от клиента
- 	* @details В этом методе происходит получение данных от клиента. 
- 	* @return rc
- 	*/
-    int receiving(int sock, void*buf, int size);
-    /**
- 	* @brief Функция отправки сообщения клиенту
- 	* @details В этом методе просиходит отправка сообщений клиенту. Ничего не возвращает.
- 	*/
-    void sending(int sock, void*buf, int sizeb);
+	
     /**
  	* @brief Функция "разговора" с клиентом.
  	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
  	*/
-    void conversation(unsigned int port,  DB new_db, int sock); 
+    void conversation(unsigned int port,  std::map <std::string,std::string> DataBaseP); 
     
     std::string GenSALT();
     std::string GenHash(const std::string& password);
     bool CompareHashes(std::string ClientHash);
     #if _UNITTEST_ != 1
-    void getpass(std::string pass);
+    void getpass(std::string pass){
+ 	password = pass;
+	}
     #endif
     #if _UNITTEST_ != 1
 	void setSALT(const std::string& salt) {
