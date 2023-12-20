@@ -32,7 +32,10 @@ public:
  	* @details В этом конструкторе происходит открытие файла, получение данных, заполнение словаря, закрытие словаря
  	*/
     DB(std::string DBName);
-	
+	/**
+     * @brief Метод для получения данных из словаря
+     * @return DataBaseP Словарь с парами идентификатор:пароль
+     */
      std::map<std::string,std::string> get_data()
     {
         return DataBaseP;

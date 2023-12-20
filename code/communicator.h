@@ -54,17 +54,40 @@ private:
     std::string strHash; ///< Хэш
     
 public:
-	  
+	/**
+ 	* @brief Конструтор класса без параметров
+ 	*/
 	communicator(){};
 	
     /**
  	* @brief Функция "разговора" с клиентом.
+ 	* @param [in] unsigned int port, map <string,string> DataBaseP
  	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
  	*/
     void conversation(unsigned int port,  std::map <std::string,std::string> DataBaseP); 
-    
+    /**
+ 	* @brief Функция генерации соли
+ 	* @details В этом методе происходит генерация соли. 
+ 	* @return SALT
+ 	*/
     std::string GenSALT();
+     /**
+ 	* @brief Генерация хэша из пароля и соли.
+ 	* @details Данный метод использует библиотеку Crypto++ для генерации хэша MD5 из пароля и соли.
+ 	* Затем хэш преобразуется в шестнадцатеричную строку.
+ 	* @param [in] password Пароль для хэширования.
+ 	* @return Сгенерированный хэш в шестнадцатеричной строке.
+	*/
     std::string GenHash(const std::string& password);
+    /**
+	* @brief Сравнение хэшей клиента и сервера.
+ 	* @details Данный метод сравнивает хэш, полученный от клиента, с хэшем, сгенерированным на сервере.
+ 	* Если хэши не совпадают, то генерируется исключение server_error с сообщением "Invalid Hash".
+ 	* Затем выводится на экран хэш клиента и сервера.*
+ 	* @param [in] ClientHash Хэш, полученный от клиента.
+ 	* @return true, если хэши совпадают, иначе false.
+ 	* @throw server_error, если хэши не совпадают.
+	*/
     bool CompareHashes(std::string ClientHash);
     #if _UNITTEST_ != 1
     void getpass(std::string pass){

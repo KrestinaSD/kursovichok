@@ -14,7 +14,7 @@
 #include <iostream>
 
 /** @brief Класс вызова исключений 
-**  @class server_error
+**  @details Класс server_error
  */
 
 class server_error: public std::invalid_argument {
@@ -23,15 +23,13 @@ class server_error: public std::invalid_argument {
 	public:
 	/**
  	@brief Конструктор ошибок с строкой в качестве параметра
- 	@param [in] what_arg, тип ошибки, const std::string.
- 	@param [in] critical, критическа ошибка - true, штатная - false, bool
+ 	@param [in] what_arg, тип ошибки, const std::string, critical, критическа ошибка - true, штатная - false, bool
 	*/
 	explicit server_error (const std::string& what_arg, bool critical = false):
 		std::invalid_argument(what_arg) {State = critical;}
 	/**
  	@brief Конструктор ошибок с си-строкой в качестве параметра
- 	@param [in] what_arg, тип ошибки, const char*.
- 	@param [in] critical, критическая ошибка - true, штатная - false, bool
+ 	@param [in] what_arg, тип ошибки, const char*, critical, критическая ошибка - true, штатная - false, bool
 	*/
 	explicit server_error (const char* what_arg,  bool critical = false):
 		std::invalid_argument(what_arg) {State = critical;}
