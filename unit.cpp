@@ -71,8 +71,8 @@ SUITE(HAHA){
 SUITE(CALC){
 	TEST(EMPTY_VEC){
 		Average avg;
-    	std::vector<double> arr;
-    	CHECK_THROW(avg.average(arr), server_error);
+    	std::vector<double> empty = {};
+    	CHECK_THROW(avg.average(empty), server_error);
 	}
 	
 	TEST(MAX_OVER_VEC){

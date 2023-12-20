@@ -1,5 +1,6 @@
 #include "communicator.h"
-
+#include <limits>
+#include <string.h>
 using namespace std;
 
 struct sockaddr_in addr;
@@ -159,11 +160,22 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     			close(work_sock);
     			throw server_error("Receiving error");
     		}
+    		
+    		/*///////////////////////////
+    		if (memcmp(int_buf.data(), "\0", 8) != 0){
+        		close(work_sock);
+        		throw server_error("Received number is too large");
+    		}
+    		////////////////////////////*/
+    		
         	std::vector<double> arr;
         	
         	for(unsigned int i = 0; i < vector_len; i++) {
+        	if ((int_buf[i] >= std::numeric_limits<double>::max()) or (int_buf[i] < std::numeric_limits<double>::min())){
+        		arr.push_back(0);
+        	}else{
                     arr.push_back(int_buf[i]);
-            }
+            }}
 
             Average res;
             double result = res.average(arr);
