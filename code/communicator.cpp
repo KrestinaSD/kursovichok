@@ -61,7 +61,9 @@ bool communicator::CompareHashes(std::string ClientHash) {
 
 void communicator::conversation(unsigned int port, std::map <std::string,std::string> DataBaseP)
 {
+	int work_sock;
 	try{
+	
 	// Создание сокета
     int sckt = socket(AF_INET, SOCK_STREAM, 0);
     if(sckt < 0) {
@@ -92,16 +94,16 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     	sockaddr_in * client_addr = new sockaddr_in;
     	socklen_t len = sizeof (sockaddr_in);
     	// Принятие входящего соединения на сокете sock
-    	int work_sock = accept(sckt, (sockaddr*)(client_addr), &len);
-    	if (work_sock < 0){
+    	work_sock = accept(sckt, (sockaddr*)(client_addr), &len);
+    	if (work_sock <= 0){
         	throw server_error("Accepting error");
     	}
     	logi.writelog("Accepting OK");
     	char buf[1024];
     	rc = recv(work_sock, buf, sizeof(buf), 0);
-    	if (rc < 0){
+    	if (rc <= 0){
     		close(work_sock);
-    		throw server_error("Receiving error");
+    		throw server_error("Receiving error при получении логина");
     	}
     	std::string USRlogIn = string(buf, rc);
     	for (uint i = 0; i < USRlogIn.size();i++){
@@ -122,9 +124,9 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     		throw server_error("Sending error");
     	}
     	rc = recv(work_sock, buf, sizeof(buf), 0);
-    	if (rc < 0){
+    	if (rc <= 0){
     		close(work_sock);
-    		throw server_error("Receiving error");
+    		throw server_error("Receiving error при получении соли");
     	}
         string pass = string(buf, rc);
     	for (uint i = 0; i < pass.size();i++){
@@ -134,7 +136,7 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
 		}
 		CompareHashes(pass);
 		rc = send(work_sock, "OK", 2, 0);
-		if (rc < 0){
+		if (rc <= 0){
     		close(work_sock);
     		throw server_error("Sending error");
     	}
@@ -142,45 +144,52 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
         uint32_t num_vectors;
         uint32_t vector_len;
         rc = recv(work_sock, &num_vectors, sizeof num_vectors, 0);
-        if (rc < 0){
+        if (rc <= 0){
     		close(work_sock);
-    		throw server_error("Receiving error");
+    		throw server_error("Receiving error при получении количества векторов");
     	}  
     	
         for(unsigned int i =0; i< num_vectors; i++) {
         	rc = recv(work_sock, &vector_len, sizeof vector_len, 0);
-        	if (rc < 0){
+        	if (rc <= 0){
     			close(work_sock);
-    			throw server_error("Receiving error");
+    			throw server_error("Receiving error длины вектора");
     		}
+    		   		
     		
         	std::vector<double> int_buf(vector_len);
     		rc = recv(work_sock, int_buf.data(), vector_len*sizeof(double), 0);
-        	if (rc < 0){
+    		/*if (rc <= static_cast<int>(vector_len*sizeof(double))){
+                close(work_sock);
+                throw server_error("Received data is not of type double");
+            }*/
+        	if (rc <= 0){
     			close(work_sock);
-    			throw server_error("Receiving error");
+    			throw server_error("Receiving error ghb ghbtvt dtrnjhf");
     		}
-    		
-    		/*///////////////////////////
-    		if (memcmp(int_buf.data(), "\0", 8) != 0){
-        		close(work_sock);
-        		throw server_error("Received number is too large");
-    		}
-    		////////////////////////////*/
-    		
+  /*
+    		if (rc != static_cast<int>(vector_len*sizeof(double))){
+    			close(work_sock);
+    			throw server_error("Received data is not of type double");
+			}
+    		/////////////////////     */
         	std::vector<double> arr;
         	
         	for(unsigned int i = 0; i < vector_len; i++) {
-        	if ((int_buf[i] >= std::numeric_limits<double>::max()) or (int_buf[i] < std::numeric_limits<double>::min())){
-        		arr.push_back(0);
-        	}else{
                     arr.push_back(int_buf[i]);
-            }}
+            }
+            
+			for (std::vector<double>::iterator it = arr.begin(); it != arr.end(); ++it){
+                	std::cout << '\t' << *it;
+			}
+			
+			std::cout << '\n';
+			
 
             Average res;
             double result = res.average(arr);
             rc = send(work_sock,  &result, sizeof(double), 0);
-            if (rc < 0){
+            if (rc <= 0){
     			close(work_sock);
     			throw server_error("Sending error");
     		} 
@@ -193,13 +202,15 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
        
     }
    } catch (const server_error & e) {
+   		close(work_sock);
 		std::stringstream ss;
     	ss << "Error: " << e.what() << ", State: " << e.getState();
     	logi.writelog(ss.str());
           if (e.getState() == "Критическая"){
+          	close(sckt);
 			exit(1);
 		}
-        close(sckt);
+        
     } 
 }
 
