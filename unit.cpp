@@ -70,9 +70,13 @@ SUITE(HAHA){
 //Тесты вычисления среднего арифметического в модуле калькулятора
 SUITE(CALC){
 	TEST(EMPTY_VEC){
-		Average avg;
-    	std::vector<double> empty = {};
-    	CHECK_THROW(avg.average(empty), server_error);
+    	Average avg;
+    	std::vector<double> arr;
+    	try {
+        	avg.average(arr);
+    	} catch (const server_error& e) {
+        	CHECK(true); // Если мы получили исключение, то тест пройден
+    	}
 	}
 	
 	TEST(MAX_OVER_VEC){

@@ -61,7 +61,8 @@ public:
 	
     /**
  	* @brief Функция "разговора" с клиентом.
- 	* @param [in] unsigned int port, map <string,string> DataBaseP
+ 	* @param [in] unsigned int port, 
+ 	* @param [in] map <string,string> DataBaseP
  	* @details В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает.
  	*/
     void conversation(unsigned int port,  std::map <std::string,std::string> DataBaseP); 

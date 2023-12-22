@@ -23,7 +23,8 @@ private:
 public:
 	/**
  	* @brief Функция разбора ПКС и включение модулей
- 	* @param [in] int argc, char **argv
+ 	* @param [in] int argc,
+ 	* @param [in] char **argv
  	* @details В этом методе происходит разбор ПКС и включение модулей
  	* @return 1 or 0
  	*/

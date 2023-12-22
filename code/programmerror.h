@@ -22,14 +22,16 @@ class server_error: public std::invalid_argument {
 	bool State = false; ///<Статус критичности ошибки
 	public:
 	/**
- 	@brief Конструктор ошибок с строкой в качестве параметра
- 	@param [in] what_arg, тип ошибки, const std::string, critical, критическа ошибка - true, штатная - false, bool
+ 	* @brief Конструктор ошибок с строкой в качестве параметра
+ 	* @param [in] what_arg, тип ошибки,
+ 	* @param [in]  const std::string, critical, критическая ошибка - true, штатная - false, bool
 	*/
 	explicit server_error (const std::string& what_arg, bool critical = false):
 		std::invalid_argument(what_arg) {State = critical;}
 	/**
- 	@brief Конструктор ошибок с си-строкой в качестве параметра
- 	@param [in] what_arg, тип ошибки, const char*, critical, критическая ошибка - true, штатная - false, bool
+ 	* @brief Конструктор ошибок с си-строкой в качестве параметра
+ 	* @param [in] what_arg, тип ошибки, 
+ 	* @param [in] const char*, critical, критическая ошибка - true, штатная - false, bool
 	*/
 	explicit server_error (const char* what_arg,  bool critical = false):
 		std::invalid_argument(what_arg) {State = critical;}

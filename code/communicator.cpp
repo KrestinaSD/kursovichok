@@ -202,7 +202,6 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
        
     }
    } catch (const server_error & e) {
-   		close(work_sock);
 		std::stringstream ss;
     	ss << "Error: " << e.what() << ", State: " << e.getState();
     	logi.writelog(ss.str());

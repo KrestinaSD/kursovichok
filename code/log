@@ -327,3 +327,28 @@
 21.12.2023 21:18:32 Client disconnected
 21.12.2023 21:18:34 Accepting OK
 21.12.2023 21:18:34 Error: Receiving error длины вектора, State: Штатная
+21.12.2023 21:35:33 Socket creation OK
+21.12.2023 21:35:33 Socket bind OK
+21.12.2023 21:35:33 The server started
+21.12.2023 21:35:38 Accepting OK
+21.12.2023 21:35:38 Error: Receiving error длины вектора, State: Штатная
+21.12.2023 22:16:13 Socket creation OK
+21.12.2023 22:16:13 Socket bind OK
+21.12.2023 22:16:13 The server started
+21.12.2023 22:16:17 Accepting OK
+21.12.2023 22:16:17 Calculating OK
+21.12.2023 22:16:17 Client disconnected
+21.12.2023 22:16:19 Accepting OK
+21.12.2023 22:16:19 Error: Receiving error длины вектора, State: Штатная
+22.12.2023 18:42:08 Socket creation OK
+22.12.2023 18:42:08 Socket bind OK
+22.12.2023 18:42:08 The server started
+22.12.2023 18:42:19 Accepting OK
+22.12.2023 18:42:19 Calculating OK
+22.12.2023 18:42:19 Client disconnected
+22.12.2023 18:42:23 Accepting OK
+22.12.2023 18:42:24 Error: Receiving error длины вектора, State: Штатная
+22.12.2023 18:42:51 Socket creation OK
+22.12.2023 18:42:51 Error: Socket bind error, State: Критическая
+22.12.2023 18:43:14 Socket creation OK
+22.12.2023 18:43:14 Error: Socket bind error, State: Критическая
