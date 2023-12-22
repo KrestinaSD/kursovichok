@@ -38,6 +38,9 @@ int interface::Opts(int argc, char **argv)
     }
     if(args.count('p')) {
         Port = std::stoi(args['p']);
+        if ((Port < 0) or (Port > 65535)){
+        	usage(argv[0]);
+        }
     }
     
 	Logger logger;
@@ -60,7 +63,7 @@ int interface::Opts(int argc, char **argv)
 
 void interface::usage(const char* progName)
 {
-    std::cout<<"Использование: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port] \n";
+    std::cout<<"Использование: "<<progName<<" [-b DataBaseName] [-n LogFileName] [-p Port(0;65535)] \n";
     exit(1);
 }
 
