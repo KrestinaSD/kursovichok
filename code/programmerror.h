@@ -2,7 +2,7 @@
 * @file programmerror.h
 * @author Крестина С.Д.
 * @version 1.0
-* @brief Заголовочный файл для модуля ErrorTracker, отвечающий за ошибки и их запись в лог
+* @brief Заголовочный файл для модуля server_error, отвечающий за ошибки
 */
 #pragma once
 

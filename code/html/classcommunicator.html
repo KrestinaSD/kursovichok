@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера. Сервер, вычисляющий среднее арифметическое вектора типа double.: Класс communicator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Программная реализация сетевого сервера. Сервер, вычисляющий среднее арифметическое вектора типа double.
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Server</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="classcommunicator-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс communicator</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс для связи с клиентом  
+ <a href="classcommunicator.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="communicator_8h_source.html">communicator.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a94acc8df9ead5a56ed33084592587531"><td class="memItemLeft" align="right" valign="top"><a id="a94acc8df9ead5a56ed33084592587531"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunicator.html#a94acc8df9ead5a56ed33084592587531">communicator</a> ()</td></tr>
+<tr class="memdesc:a94acc8df9ead5a56ed33084592587531"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструтор класса без параметров <br /></td></tr>
+<tr class="separator:a94acc8df9ead5a56ed33084592587531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6648b5e548ea70c9a04cfeab37f26a9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunicator.html#a6648b5e548ea70c9a04cfeab37f26a9b">conversation</a> (unsigned int port, std::map&lt; std::string, std::string &gt; DataBaseP)</td></tr>
+<tr class="memdesc:a6648b5e548ea70c9a04cfeab37f26a9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция "разговора" с клиентом.  <a href="classcommunicator.html#a6648b5e548ea70c9a04cfeab37f26a9b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6648b5e548ea70c9a04cfeab37f26a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51c0371844b8010631f8917e8df8dd7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunicator.html#ae51c0371844b8010631f8917e8df8dd7">GenSALT</a> ()</td></tr>
+<tr class="memdesc:ae51c0371844b8010631f8917e8df8dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция генерации соли  <a href="classcommunicator.html#ae51c0371844b8010631f8917e8df8dd7">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae51c0371844b8010631f8917e8df8dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1090383451bc5f16f4d75585f3efa4fb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunicator.html#a1090383451bc5f16f4d75585f3efa4fb">GenHash</a> (const std::string &amp;password)</td></tr>
+<tr class="memdesc:a1090383451bc5f16f4d75585f3efa4fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Генерация хэша из пароля и соли.  <a href="classcommunicator.html#a1090383451bc5f16f4d75585f3efa4fb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1090383451bc5f16f4d75585f3efa4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f619db0d45601af80a36fb289a78e72"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunicator.html#a0f619db0d45601af80a36fb289a78e72">CompareHashes</a> (std::string ClientHash)</td></tr>
+<tr class="memdesc:a0f619db0d45601af80a36fb289a78e72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сравнение хэшей клиента и сервера.  <a href="classcommunicator.html#a0f619db0d45601af80a36fb289a78e72">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0f619db0d45601af80a36fb289a78e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f136c9ba539f5b8e115f8645a00549"><td class="memItemLeft" align="right" valign="top"><a id="a62f136c9ba539f5b8e115f8645a00549"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getpass</b> (std::string pass)</td></tr>
+<tr class="separator:a62f136c9ba539f5b8e115f8645a00549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc9a4118da0b9889798fb34688d3791"><td class="memItemLeft" align="right" valign="top"><a id="abbc9a4118da0b9889798fb34688d3791"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSALT</b> (const std::string &amp;salt)</td></tr>
+<tr class="separator:abbc9a4118da0b9889798fb34688d3791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс для связи с клиентом </p>
+<p>Методы: установка бинда, установка сервера в режим ожидания соединения принятие соединения получение данных от клиента отправка данных клиенту "разговор" с клиентом </p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="a0f619db0d45601af80a36fb289a78e72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f619db0d45601af80a36fb289a78e72">&#9670;&nbsp;</a></span>CompareHashes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool communicator::CompareHashes </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>ClientHash</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сравнение хэшей клиента и сервера. </p>
+<p>Данный метод сравнивает хэш, полученный от клиента, с хэшем, сгенерированным на сервере. Если хэши не совпадают, то генерируется исключение <a class="el" href="classserver__error.html" title="Класс вызова исключений">server_error</a> с сообщением "Invalid Hash". Затем выводится на экран хэш клиента и сервера.* </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ClientHash</td><td>Хэш, полученный от клиента. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если хэши совпадают, иначе false. </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classserver__error.html" title="Класс вызова исключений">server_error</a>,если</td><td>хэши не совпадают. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6648b5e548ea70c9a04cfeab37f26a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6648b5e548ea70c9a04cfeab37f26a9b">&#9670;&nbsp;</a></span>conversation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void communicator::conversation </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, std::string &gt;&#160;</td>
+          <td class="paramname"><em>DataBaseP</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция "разговора" с клиентом. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">unsigned</td><td>int port, </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">map</td><td>&lt;string,string&gt; DataBaseP</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>В этом методе происходит все взаимодействие с клиентом. Ничего не возвращает. </p>
+
+</div>
+</div>
+<a id="a1090383451bc5f16f4d75585f3efa4fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1090383451bc5f16f4d75585f3efa4fb">&#9670;&nbsp;</a></span>GenHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string communicator::GenHash </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Генерация хэша из пароля и соли. </p>
+<p>Данный метод использует библиотеку Crypto++ для генерации хэша MD5 из пароля и соли. Затем хэш преобразуется в шестнадцатеричную строку. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">password</td><td>Пароль для хэширования. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Сгенерированный хэш в шестнадцатеричной строке. </dd></dl>
+
+</div>
+</div>
+<a id="ae51c0371844b8010631f8917e8df8dd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51c0371844b8010631f8917e8df8dd7">&#9670;&nbsp;</a></span>GenSALT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string communicator::GenSALT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция генерации соли </p>
+<p>В этом методе происходит генерация соли. </p><dl class="section return"><dt>Возвращает</dt><dd>SALT </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="communicator_8h_source.html">communicator.h</a></li>
+<li>communicator.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

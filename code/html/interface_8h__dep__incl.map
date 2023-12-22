@@ -1,0 +1,5 @@
+<map id="interface.h" name="interface.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля interface, отвечающий за разбор ПКС, и включение других модулей" alt="" coords="23,5,115,32"/>
+<area shape="rect" id="node2" href="$communicator_8h.html" title="Заголовочный файл для модуля communacator, отвечающий за связь с клиентом" alt="" coords="5,155,132,181"/>
+<area shape="rect" id="node3" href="$logger_8h.html" title="Заголовочный файл для модуля logger, отвечающий за запись логов" alt="" coords="69,80,143,107"/>
+</map>

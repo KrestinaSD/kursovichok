@@ -1,0 +1,13 @@
+<map id="userbase.h" name="userbase.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля userbase, отвечающий за получение данных из базы клиентов" alt="" coords="148,5,241,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,56,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="17,155,76,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="389,80,462,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="101,155,187,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="486,80,562,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="212,155,292,181"/>
+<area shape="rect" id="node8" href="$programmerror_8h.html" title="Заголовочный файл для модуля server_error, отвечающий за ошибки" alt="" coords="233,80,365,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="316,155,375,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="399,155,462,181"/>
+<area shape="rect" id="node11" title=" " alt="" coords="486,155,551,181"/>
+</map>

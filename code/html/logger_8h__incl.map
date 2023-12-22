@@ -1,0 +1,15 @@
+<map id="logger.h" name="logger.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля logger, отвечающий за запись логов" alt="" coords="254,5,329,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="265,155,323,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="122,80,189,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="213,80,277,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="301,80,375,107"/>
+<area shape="rect" id="node6" href="$interface_8h.html" title="Заголовочный файл для модуля interface, отвечающий за разбор ПКС, и включение других модулей" alt="" coords="5,80,97,107"/>
+<area shape="rect" id="node8" href="$programmerror_8h.html" title="Заголовочный файл для модуля server_error, отвечающий за ошибки" alt="" coords="451,80,583,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="14,155,89,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="629,155,716,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="741,155,799,181"/>
+<area shape="rect" id="node11" title=" " alt="" coords="348,155,411,181"/>
+<area shape="rect" id="node12" title=" " alt="" coords="435,155,500,181"/>
+<area shape="rect" id="node13" title=" " alt="" coords="525,155,605,181"/>
+</map>

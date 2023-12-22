@@ -1,0 +1,7 @@
+<map id="programmerror.h" name="programmerror.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля server_error, отвечающий за ошибки" alt="" coords="112,5,244,32"/>
+<area shape="rect" id="node2" href="$calculator_8h.html" title="Заголовочный файл для модуля calculator, отвечающий за вычисления" alt="" coords="5,80,103,107"/>
+<area shape="rect" id="node3" href="$communicator_8h.html" title="Заголовочный файл для модуля communacator, отвечающий за связь с клиентом" alt="" coords="115,155,241,181"/>
+<area shape="rect" id="node4" href="$logger_8h.html" title="Заголовочный файл для модуля logger, отвечающий за запись логов" alt="" coords="178,80,253,107"/>
+<area shape="rect" id="node5" href="$userbase_8h.html" title="Заголовочный файл для модуля userbase, отвечающий за получение данных из базы клиентов" alt="" coords="277,80,370,107"/>
+</map>

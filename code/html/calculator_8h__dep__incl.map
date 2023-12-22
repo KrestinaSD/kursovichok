@@ -1,0 +1,4 @@
+<map id="calculator.h" name="calculator.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля calculator, отвечающий за вычисления" alt="" coords="20,5,117,32"/>
+<area shape="rect" id="node2" href="$communicator_8h.html" title="Заголовочный файл для модуля communacator, отвечающий за связь с клиентом" alt="" coords="5,80,132,107"/>
+</map>
