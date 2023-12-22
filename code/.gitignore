@@ -3,3 +3,4 @@ server
 log.*
 client_double
 client_uint16_t
+client_int32_t

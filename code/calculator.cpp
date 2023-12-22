@@ -14,9 +14,7 @@ double Average::average(std::vector<double>& arr) {
 			}
 			
 		  	result = sum/arr.size(); 
-		  	if ((result >= std::numeric_limits<double>::max()) or (result <= std::numeric_limits<double>::min())){
-					throw server_error("Result is very big/small.");
-				}
+		  	
 		  	
 		}catch(const server_error & e){
 			std::stringstream ss;

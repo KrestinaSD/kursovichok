@@ -94,10 +94,16 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     	sockaddr_in * client_addr = new sockaddr_in;
     	socklen_t len = sizeof (sockaddr_in);
     	// Принятие входящего соединения на сокете sock
+    	
     	work_sock = accept(sckt, (sockaddr*)(client_addr), &len);
     	if (work_sock <= 0){
         	throw server_error("Accepting error");
     	}
+    	////////////////////////////////////////////////////
+    	////////////////////////////////////////////
+    	////////////////////////////////////////////
+    	try{
+    	
     	logi.writelog("Accepting OK");
     	char buf[1024];
     	rc = recv(work_sock, buf, sizeof(buf), 0);
@@ -142,7 +148,6 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     	}
 		
         uint32_t num_vectors;
-        uint32_t vector_len;
         rc = recv(work_sock, &num_vectors, sizeof num_vectors, 0);
         if (rc <= 0){
     		close(work_sock);
@@ -150,29 +155,25 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     	}  
     	
         for(unsigned int i =0; i< num_vectors; i++) {
+        	uint32_t vector_len;
         	rc = recv(work_sock, &vector_len, sizeof vector_len, 0);
         	if (rc <= 0){
     			close(work_sock);
     			throw server_error("Receiving error длины вектора");
     		}
     		   		
-    		
         	std::vector<double> int_buf(vector_len);
     		rc = recv(work_sock, int_buf.data(), vector_len*sizeof(double), 0);
-    		/*if (rc <= static_cast<int>(vector_len*sizeof(double))){
-                close(work_sock);
-                throw server_error("Received data is not of type double");
-            }*/
         	if (rc <= 0){
     			close(work_sock);
     			throw server_error("Receiving error ghb ghbtvt dtrnjhf");
     		}
-  /*
+  
     		if (rc != static_cast<int>(vector_len*sizeof(double))){
     			close(work_sock);
     			throw server_error("Received data is not of type double");
 			}
-    		/////////////////////     */
+    		/////////////////////     
         	std::vector<double> arr;
         	
         	for(unsigned int i = 0; i < vector_len; i++) {
@@ -193,12 +194,24 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     			close(work_sock);
     			throw server_error("Sending error");
     		} 
-       }
+       } 
        std::cout<<"Calculations were successful\n";
        logi.writelog("Calculating OK");
        close(work_sock);
-       std::cout<<"Done\n";
+       std::cout<<"Done. Client disconnected \n";
        logi.writelog("Client disconnected");
+       } catch (const server_error & e) {
+       			std::stringstream ss;
+                ss << "Error: " << e.what() << ", State: " << e.getState();
+                logi.writelog(ss.str());
+                std::cerr << e.what() << std::endl;
+
+                // Закрытие соединения
+                close(work_sock);
+                std::cerr << "Client disconnected"<< std::endl;
+            }
+            
+       
        
     }
    } catch (const server_error & e) {
@@ -207,8 +220,8 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     	logi.writelog(ss.str());
           if (e.getState() == "Критическая"){
           	close(sckt);
-			exit(1);
 		}
+		std::cerr << e.what() << std::endl;
         
     } 
 }
