@@ -42,14 +42,20 @@ int interface::Opts(int argc, char **argv)
         	usage(argv[0]);
         }
     }
+    Logger logger;
     
-	Logger logger;
     try{
+    	if(DataBaseName.find('.')==std::string::npos){
+			throw server_error("invalid_base_path", true);
+		}
+		if(LogFileName.find('.')==std::string::npos){
+			throw server_error("invalid_log_path", true);
+		}
     	communicator main_manager;
     	logger.set_path(LogFileName);
     	DB new_db(DataBaseName);
     	main_manager.conversation(Port, new_db.get_data());
-    	
+    	       
 	} catch (const server_error & e) {
 		std::stringstream ss;
     	ss << "Error: " << e.what() << ", State: " << e.getState();
