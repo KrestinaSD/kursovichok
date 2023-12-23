@@ -51,7 +51,7 @@ bool communicator::CompareHashes(std::string ClientHash) {
     if (ClientHash != ServerHash) {
         throw server_error("Invalid Hash");
     }
-	std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
+	//std::cout<<"Kлиент: "<<ClientHash<<"\n"<<"Сервер: "<<ServerHash<<" "<<std::endl;
     return (ClientHash.compare(ServerHash) == 0);
 }
 
