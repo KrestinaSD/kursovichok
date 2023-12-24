@@ -166,7 +166,7 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
     		rc = recv(work_sock, int_buf.data(), vector_len*sizeof(double), 0);
         	if (rc <= 0){
     			close(work_sock);
-    			throw server_error("Receiving error ghb ghbtvt dtrnjhf");
+    			throw server_error("Receiving error ");
     		}
   
     		if (rc != static_cast<int>(vector_len*sizeof(double))){
@@ -209,6 +209,7 @@ void communicator::conversation(unsigned int port, std::map <std::string,std::st
                 // Закрытие соединения
                 close(work_sock);
                 std::cerr << "Client disconnected"<< std::endl;
+                logi.writelog("Client disconnected");
             }
             
        
